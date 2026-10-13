@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML — Chapter 02</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --ink:#172033;--muted:#5b667b;--paper:#fffdf7;--line:#d9deea;
+  --cream:#fff4d8;--blue:#e8f5ff;--green:#eaf8ee;--pink:#ffeaf1;
+  --yellow:#fff0b8;--purple:#f0eaff;--orange:#ff7a45;--white:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
+button{font:inherit}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;overflow:hidden;padding:5.4vh 5.2vw 7vh}
+.slide.active{display:block;animation:appear .28s ease}
+@keyframes appear{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+h1,h2,h3,p{margin:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.kicker .dot{width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.title{font-size:clamp(42px,4.2vw,82px);line-height:.98;letter-spacing:-.055em;margin-top:13px;max-width:950px}
+.subtitle{font-size:clamp(18px,1.55vw,28px);line-height:1.35;color:var(--muted);margin-top:18px;max-width:780px}
+.slide-no{position:absolute;top:5.2vh;right:5.2vw;font-size:15px;font-weight:800;color:#8a94a8}
+.footer{position:absolute;left:5.2vw;right:5.2vw;bottom:2.4vh;display:flex;justify-content:space-between;align-items:center;color:#7d879a;font-size:13px;font-weight:700}
+.hint{display:flex;align-items:center;gap:8px}
+kbd{border:1px solid #cbd1dc;background:#fff;border-bottom-width:2px;border-radius:7px;padding:3px 7px;color:#4e596c}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:var(--orange);transition:width .25s ease}
+.grid{display:grid;gap:28px}
+.two{grid-template-columns:1fr 1.15fr}
+.equal{grid-template-columns:1fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.center{display:flex;align-items:center}
+.mt{margin-top:34px}
+.card{background:#fff;border:2px solid var(--line);border-radius:24px;box-shadow:0 12px 0 rgba(23,32,51,.06)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1.5px solid #cfd5df;border-radius:999px;background:#fff;font-size:13px;font-weight:800}
+.big-number{font-size:92px;font-weight:950;line-height:.8;letter-spacing:-.08em;color:#dfe4ed}
+
+/* browser */
+.browser{background:#fff;border:3px solid var(--ink);border-radius:25px;overflow:hidden;box-shadow:12px 14px 0 rgba(23,32,51,.1)}
+.browserbar{height:47px;background:#f3f5f8;border-bottom:2px solid #d8dde6;display:flex;align-items:center;gap:9px;padding:0 14px}
+.browserdots{display:flex;gap:6px}.browserdots span{width:9px;height:9px;border-radius:50%;background:#9ca5b5}
+.url{height:28px;flex:1;background:#fff;border:1px solid #d4d9e2;border-radius:8px;padding:5px 10px;color:#687287;font-size:12px}
+.site{padding:24px;background:#fff}
+.site-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.logo{font-weight:950;letter-spacing:-.03em;font-size:18px}
+.navlinks{display:flex;gap:18px;color:#687287;font-size:11px;font-weight:800}
+.hero{background:var(--blue);border:1.5px solid #cfe5f5;border-radius:18px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.hero h3{font-size:27px;letter-spacing:-.04em}.hero p{font-size:11px;color:#657087;margin-top:7px;line-height:1.4}
+.cta{display:inline-block;margin-top:13px;background:var(--ink);color:#fff;padding:9px 13px;border-radius:8px;font-size:10px;font-weight:900}
+.hero-art{width:125px;height:92px;border-radius:15px;background:#fff;border:2px solid #cbd8e6;display:flex;align-items:center;justify-content:center}
+.hero-art i{width:45px;height:45px}
+.mini-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.mini-card{padding:13px;border:1.5px solid #dce1e9;border-radius:13px}
+.mini-card .ico{width:26px;height:26px;border-radius:8px;background:var(--yellow);display:grid;place-items:center;margin-bottom:8px}
+.mini-card strong{font-size:11px}.mini-card small{display:block;color:#7b8597;font-size:9px;margin-top:3px}
+
+/* code */
+.code{background:#182033;color:#eef2f7;border-radius:20px;padding:22px 24px;font:500 14px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace;box-shadow:10px 12px 0 rgba(23,32,51,.12)}
+.code .tag{color:#ff9b75}.code .attr{color:#b8d8ff}.code .text{color:#f5e5a8}.code .comment{color:#8490a7}
+.editor-top{display:flex;gap:7px;margin-bottom:16px}.editor-top span{width:8px;height:8px;border-radius:50%;background:#778298}
+.source-wrap{background:#111827;border-radius:20px;padding:12px}
+.source-head{color:#aab3c4;font:700 11px/1 system-ui;margin-bottom:10px}
+
+/* structure */
+.tree{padding:25px;background:#fff;border:2px solid var(--line);border-radius:24px}
+.tree-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;margin:5px 0;font:700 14px ui-monospace,monospace}
+.tree-row.root{background:var(--purple)}.tree-row.head{background:var(--yellow);margin-left:28px}.tree-row.body{background:var(--green);margin-left:28px}
+.tree-row.child{background:#f7f8fa;margin-left:58px;font-size:12px}
+.bracket{color:var(--orange);font-weight:950}
+
+/* file */
+.explorer{background:#fff;border:2px solid var(--line);border-radius:22px;overflow:hidden}
+.ex-head{padding:15px 18px;border-bottom:1px solid var(--line);font-size:13px;font-weight:900;display:flex;gap:8px;align-items:center}
+.ex-body{display:grid;grid-template-columns:145px 1fr;min-height:280px}
+.side{background:#f7f8fa;padding:18px;font-size:11px;color:#6e788b;line-height:2.2}
+.file-list{padding:20px}
+.file{display:flex;align-items:center;gap:12px;padding:14px;border:2px solid #edf0f4;border-radius:14px;margin-bottom:9px}
+.file.active{border-color:#f7b49a;background:#fff7f3}
+.file-icon{width:38px;height:38px;border-radius:10px;background:#ffeadf;display:grid;place-items:center;color:#e75d2b}
+.file strong{font-size:13px}.file small{display:block;color:#8a93a3;margin-top:2px}
+.arrow{font-size:36px;font-weight:900;color:var(--orange);text-align:center}
+
+/* markup */
+.markup-stage{position:relative;min-height:360px;background:#fff;border:2px solid var(--line);border-radius:26px;padding:34px}
+.markup-line{font:700 clamp(18px,1.6vw,29px)/1.8 ui-monospace,monospace}
+.markup-line .tag{color:#d94d24}.markup-line .text{color:#172033}
+.callout{position:absolute;padding:11px 14px;background:#fff;border:2px solid var(--ink);border-radius:12px;font-size:12px;font-weight:850;box-shadow:5px 6px 0 rgba(23,32,51,.08)}
+.callout.tagc{top:62px;right:30px}.callout.contentc{top:150px;right:30px}.callout.linec{bottom:45px;left:30px}
+
+/* html5 */
+.feature{padding:24px;border-radius:22px;border:2px solid var(--line);background:#fff;min-height:140px}
+.feature .ficon{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;margin-bottom:14px}
+.feature h3{font-size:19px}.feature p{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.45}
+
+/* cover */
+.cover{background:linear-gradient(135deg,#fffdf7 0%,#fff4d8 100%)}
+.cover-layout{height:100%;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px}
+.cover h1{font-size:clamp(75px,9vw,170px);letter-spacing:-.09em;line-height:.8}
+.cover h2{font-size:clamp(30px,3vw,58px);letter-spacing:-.05em;margin-top:26px}
+.names{margin-top:28px;font-size:16px;font-weight:850;color:#5f687a}
+.cover-browser{transform:rotate(1.5deg);max-width:650px}
+
+/* controls */
+.controls{position:absolute;right:5.2vw;bottom:2.25vh;display:flex;gap:7px;z-index:10}
+.ctrl{width:34px;height:30px;border:1px solid #d0d5de;background:#fff;border-radius:8px;display:grid;place-items:center;color:#586276;cursor:pointer}
+.ctrl:hover{background:#f4f6f9}
+@media(max-width:900px){
+ .slide{padding:4vh 4vw 8vh}.two,.equal,.cover-layout{grid-template-columns:1fr}.cover-browser{display:none}
+ .title{font-size:46px}.three{grid-template-columns:1fr}
+ .site{padding:15px}.navlinks{display:none}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide cover active">
+  <div class="slide-no">CHAPTER 02 / 08</div>
+  <div class="cover-layout">
+    <div>
+      <div class="kicker"><span class="dot"></span> HTML Docs</div>
+      <h1>HTML</h1>
+      <h2>Introduction to HTML</h2>
+      <p class="subtitle">From a blank file to a real webpage — understand the language that gives the web its structure.</p>
+      <div class="names">By Yash Srivastava &amp; Shivam Srivastava</div>
+    </div>
+    <div class="cover-browser">
+      <div class="browser">
+        <div class="browserbar"><div class="browserdots"><span></span><span></span><span></span></div><div class="url">my-first-page.html</div></div>
+        <div class="site">
+          <div class="site-nav"><div class="logo">MY PAGE</div><div class="navlinks"><span>Home</span><span>About</span><span>Contact</span></div></div>
+          <div class="hero">
+            <div><h3>Welcome to the Web</h3><p>HTML gives every piece of content a place and meaning.</p><span class="cta">Explore</span></div>
+            <div class="hero-art"><i data-lucide="layout-template"></i></div>
+          </div>
+          <div class="mini-cards"><div class="mini-card"><div class="ico"><i data-lucide="type"></i></div><strong>Text</strong><small>Headings &amp; paragraphs</small></div><div class="mini-card"><div class="ico" style="background:#eaf8ee"><i data-lucide="image"></i></div><strong>Images</strong><small>Visual content</small></div><div class="mini-card"><div class="ico" style="background:#f0eaff"><i data-lucide="link"></i></div><strong>Links</strong><small>Connect pages</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>INTRODUCTION TO HTML</span><span class="hint"><kbd>→</kbd> Start</span></div>
+</section>
+
+<section class="slide" style="background:var(--blue)">
+  <div class="slide-no">02 / 08</div>
+  <div class="kicker"><span class="dot"></span> 01 — THE FOUNDATION</div>
+  <h2 class="title">What is HTML?</h2>
+  <p class="subtitle">HTML is the standard markup language used to structure content on a webpage.</p>
+  <div class="grid two center mt">
+    <div>
+      <div class="card" style="padding:28px;background:#fff">
+        <span class="pill"><i data-lucide="file-code-2" width="15"></i> HTML = Structure</span>
+        <h3 style="font-size:31px;letter-spacing:-.04em;margin-top:18px">It tells the browser<br>what each piece is.</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.55;margin-top:13px">Heading? Paragraph? Image? Link? HTML describes the role and arrangement of the content.</p>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap">
+        <span class="pill">Text</span><span class="pill">Images</span><span class="pill">Links</span><span class="pill">Forms</span>
+      </div>
+    </div>
+    <div class="browser">
+      <div class="browserbar"><div class="browserdots"><span></span><span></span><span></span></div><div class="url">example.com</div></div>
+      <div class="site">
+        <div class="site-nav"><div class="logo">STUDENT HUB</div><div class="navlinks"><span>Home</span><span>Courses</span><span>About</span></div></div>
+        <div class="hero">
+          <div><h3>Learn Web Development</h3><p>Start with structure. Style it later. Make it interactive after that.</p><span class="cta">Start Learning</span></div>
+          <div class="hero-art"><i data-lucide="graduation-cap"></i></div>
+        </div>
+        <div class="mini-cards"><div class="mini-card"><div class="ico"><i data-lucide="heading"></i></div><strong>Heading</strong><small>Page title</small></div><div class="mini-card"><div class="ico" style="background:#eaf8ee"><i data-lucide="align-left"></i></div><strong>Paragraph</strong><small>Readable text</small></div><div class="mini-card"><div class="ico" style="background:#f0eaff"><i data-lucide="mouse-pointer-2"></i></div><strong>Button</strong><small>User action</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>HTML gives a webpage its structure.</span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--paper)">
+  <div class="slide-no">03 / 08</div>
+  <div class="kicker"><span class="dot"></span> 02 — WHY HTML?</div>
+  <h2 class="title">Why do we need HTML?</h2>
+  <p class="subtitle">Without structure, content is just content. HTML turns it into a webpage the browser can understand.</p>
+  <div class="grid equal mt">
+    <div class="card" style="padding:22px;background:#f8f9fb">
+      <div class="pill">WITHOUT HTML</div>
+      <div style="margin-top:18px;padding:24px;background:#fff;border:2px dashed #d7dce5;border-radius:18px">
+        <div style="font-size:20px;font-weight:700">Welcome to our website</div>
+        <div style="font-size:13px;color:#727d90;margin-top:12px">Learn web development with us. Click here to explore courses and view our latest resources.</div>
+        <div style="font-size:12px;color:#999;margin-top:16px">[image] [link] [button]</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">The browser has content, but no clear structure.</p>
+    </div>
+    <div class="card" style="padding:22px;background:#fff">
+      <div class="pill" style="background:var(--green)">WITH HTML</div>
+      <div style="margin-top:18px;padding:22px;background:#fff;border:2px solid #dfe4eb;border-radius:18px">
+        <div style="font-size:25px;font-weight:950">Welcome to our website</div>
+        <div style="font-size:13px;color:#687287;margin-top:8px">Learn web development with us.</div>
+        <div style="display:flex;gap:8px;margin-top:14px"><span class="cta">Explore Courses</span><span style="padding:8px 11px;border:1px solid #ccd2dc;border-radius:8px;font-size:10px;font-weight:800">Latest Resources</span></div>
+        <div style="height:58px;background:var(--blue);border-radius:10px;margin-top:14px;display:grid;place-items:center;color:#6b7587;font-size:11px"><i data-lucide="image"></i>&nbsp; Image area</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">HTML gives meaning and structure to every part.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Structure first → style → behavior</span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--pink)">
+  <div class="slide-no">04 / 08</div>
+  <div class="kicker"><span class="dot"></span> 03 — MARKUP</div>
+  <h2 class="title">HTML = Markup Language</h2>
+  <p class="subtitle">Markup uses special notation to describe what content is — instead of only storing the content itself.</p>
+  <div class="markup-stage mt">
+    <div class="markup-line"><span class="tag">&lt;h1&gt;</span><span class="text">Welcome to HTML</span><span class="tag">&lt;/h1&gt;</span></div>
+    <div class="markup-line"><span class="tag">&lt;p&gt;</span><span class="text">This is my first webpage.</span><span class="tag">&lt;/p&gt;</span></div>
+    <div class="markup-line"><span class="tag">&lt;a&gt;</span><span class="text">Explore more</span><span class="tag">&lt;/a&gt;</span></div>
+    <div class="callout tagc"><i data-lucide="tag" width="15"></i> Markup tells the browser the role</div>
+    <div class="callout contentc"><i data-lucide="text-cursor-input" width="15"></i> Content is what the user sees</div>
+    <div class="callout linec"><i data-lucide="scan-line" width="15"></i> Together → meaningful page structure</div>
+  </div>
+  <div class="footer"><span>HTML describes content; it does not behave like a programming language.</span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--yellow)">
+  <div class="slide-no">05 / 08</div>
+  <div class="kicker"><span class="dot"></span> 04 — HTML5</div>
+  <h2 class="title">HTML5</h2>
+  <p class="subtitle">The modern evolution of HTML brought richer structure and built-in capabilities for today’s web.</p>
+  <div class="grid three mt">
+    <div class="feature"><div class="ficon" style="background:var(--blue)"><i data-lucide="layout"></i></div><h3>Semantic structure</h3><p>Elements such as header, nav, main, section and footer make page structure clearer.</p></div>
+    <div class="feature"><div class="ficon" style="background:var(--pink)"><i data-lucide="play-square"></i></div><h3>Media</h3><p>Audio and video can be embedded directly into webpages using HTML elements.</p></div>
+    <div class="feature"><div class="ficon" style="background:var(--green)"><i data-lucide="clipboard-pen-line"></i></div><h3>Better forms</h3><p>Modern input types help browsers understand and validate common form data.</p></div>
+    <div class="feature"><div class="ficon" style="background:var(--purple)"><i data-lucide="accessibility"></i></div><h3>Meaningful markup</h3><p>Clear structure can improve accessibility and how tools interpret a page.</p></div>
+    <div class="feature"><div class="ficon" style="background:#ffe8d9"><i data-lucide="monitor-smartphone"></i></div><h3>Modern web</h3><p>HTML works as the structural foundation across desktops, tablets and phones.</p></div>
+    <div class="feature"><div class="ficon" style="background:#e8f2ff"><i data-lucide="code-2"></i></div><h3>Still HTML</h3><p>HTML5 is markup — not a programming language. CSS styles it; JavaScript adds behavior.</p></div>
+  </div>
+  <div class="footer"><span>HTML5 = modern HTML standard &amp; capabilities</span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--green)">
+  <div class="slide-no">06 / 08</div>
+  <div class="kicker"><span class="dot"></span> 05 — THE FILE</div>
+  <h2 class="title">HTML File</h2>
+  <p class="subtitle">An HTML page starts as a plain text file. The <strong>.html</strong> extension tells us it is an HTML document.</p>
+  <div class="grid equal center mt">
+    <div class="explorer">
+      <div class="ex-head"><i data-lucide="folder-open" width="16"></i> web-project</div>
+      <div class="ex-body">
+        <div class="side">📁 assets<br>📁 images<br>📁 css<br>📄 README.md</div>
+        <div class="file-list">
+          <div class="file active"><div class="file-icon"><i data-lucide="file-code-2"></i></div><div><strong>index.html</strong><small>HTML document · 4 KB</small></div></div>
+          <div class="file"><div class="file-icon" style="background:#eaf8ee;color:#28734b"><i data-lucide="file-code-2"></i></div><div><strong>about.html</strong><small>HTML document · 3 KB</small></div></div>
+          <div class="file"><div class="file-icon" style="background:#f0eaff;color:#6551a8"><i data-lucide="braces"></i></div><div><strong>script.js</strong><small>JavaScript file</small></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="arrow">→</div>
+      <div class="browser" style="margin-top:10px">
+        <div class="browserbar"><div class="browserdots"><span></span><span></span><span></span></div><div class="url">file:///web-project/index.html</div></div>
+        <div class="site">
+          <div class="site-nav"><div class="logo">MY PAGE</div><div class="navlinks"><span>Home</span><span>About</span></div></div>
+          <div class="hero"><div><h3>Hello, HTML!</h3><p>Your .html file is now being interpreted by the browser.</p></div><div class="hero-art"><i data-lucide="globe-2"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Common starting point: <strong>index.html</strong></span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--blue)">
+  <div class="slide-no">07 / 08</div>
+  <div class="kicker"><span class="dot"></span> 06 — FIRST PAGE</div>
+  <h2 class="title">Our First HTML Page</h2>
+  <p class="subtitle">Write a few lines of HTML → open the file → the browser renders the result.</p>
+  <div class="grid equal mt">
+    <div class="source-wrap">
+      <div class="source-head"><i data-lucide="file-code-2" width="13"></i> index.html</div>
+      <div class="code">
+        <div class="editor-top"><span></span><span></span><span></span></div>
+        <div><span class="tag">&lt;!DOCTYPE html&gt;</span></div>
+        <div><span class="tag">&lt;html&gt;</span></div>
+        <div>&nbsp;&nbsp;<span class="tag">&lt;body&gt;</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">Hello World!</span><span class="tag">&lt;/h1&gt;</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">My first webpage.</span><span class="tag">&lt;/p&gt;</span></div>
+        <div>&nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span></div>
+        <div><span class="tag">&lt;/html&gt;</span></div>
+      </div>
+    </div>
+    <div class="browser">
+      <div class="browserbar"><div class="browserdots"><span></span><span></span><span></span></div><div class="url">localhost/index.html</div></div>
+      <div class="site" style="min-height:330px;display:flex;flex-direction:column;justify-content:center">
+        <div style="padding:30px;border:2px solid #e1e5ec;border-radius:18px;text-align:center">
+          <div style="font-size:41px;font-weight:950;letter-spacing:-.06em">Hello World!</div>
+          <div style="font-size:15px;color:#697488;margin-top:10px">My first webpage.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Code on the left → rendered webpage on the right</span><span class="hint"><kbd>→</kbd> Next</span></div>
+</section>
+
+<section class="slide" style="background:var(--purple)">
+  <div class="slide-no">08 / 08</div>
+  <div class="kicker"><span class="dot"></span> 07 — PAGE ANATOMY</div>
+  <h2 class="title">Basic HTML Structure</h2>
+  <p class="subtitle">A simple HTML document has an outer <strong>html</strong> element, with information in <strong>head</strong> and visible content in <strong>body</strong>.</p>
+  <div class="grid two mt center">
+    <div class="tree">
+      <div class="tree-row root"><span class="bracket">&lt;html&gt;</span> Entire document</div>
+      <div class="tree-row head"><span class="bracket">&lt;head&gt;</span> Page information</div>
+      <div class="tree-row child"><span class="bracket">&lt;title&gt;</span> My Website</div>
+      <div class="tree-row child" style="background:#eef2ff;margin-left:58px"><span class="bracket">&lt;meta&gt;</span> Page metadata</div>
+      <div class="tree-row body"><span class="bracket">&lt;body&gt;</span> Visible page content</div>
+      <div class="tree-row child"><span class="bracket">&lt;h1&gt;</span> Welcome</div>
+      <div class="tree-row child"><span class="bracket">&lt;p&gt;</span> Hello World</div>
+      <div style="margin-top:14px;padding:12px 14px;border-radius:12px;background:#f7f8fa;border:1px solid #e0e4eb;font-size:11px;color:#667187;line-height:1.5">
+        <strong style="color:#172033">Remember:</strong> Head stores page information. Body contains what visitors mainly see.
+      </div>
+    </div>
+    <div>
+      <div class="browser">
+        <div class="browserbar">
+          <div class="browserdots"><span></span><span></span><span></span></div>
+          <div class="url">studenthub.in</div>
+        </div>
+        <div class="site" style="position:relative;padding-top:20px">
+          <div style="position:relative;border:2px dashed #d8b947;background:#fff9db;border-radius:14px;padding:11px 14px;margin-bottom:18px;font-size:11px;font-weight:850;color:#7a6a23">
+            HEAD — page information
+            <div style="position:absolute;right:-142px;top:50%;width:125px;border-top:2px solid #d8b947"></div>
+            <div style="position:absolute;right:-158px;top:calc(50% - 7px);font-size:17px;color:#b59b21">➜</div>
+          </div>
+
+          <div style="position:relative;border:2px dashed #68a47d;background:#effbf2;border-radius:14px;padding:17px 18px">
+            <div style="font-size:25px;font-weight:950">Welcome</div>
+            <div style="font-size:12px;color:#667187;margin-top:6px">Hello World — this is visible webpage content.</div>
+            <div style="display:flex;gap:8px;margin-top:14px">
+              <span class="cta">Learn HTML</span>
+              <span style="padding:8px 11px;border:1px solid #ccd2dc;border-radius:8px;font-size:10px;font-weight:800">View Notes</span>
+            </div>
+
+            <div style="position:absolute;left:-175px;top:31px;width:155px;border-top:2px solid #68a47d"></div>
+            <div style="position:absolute;left:-188px;top:24px;font-size:17px;color:#4e8b63">←</div>
+          </div>
+
+          <div style="margin-top:17px;padding:10px 12px;background:#fff;border:1px solid #dfe4eb;border-radius:10px;font-size:10px;color:#687287">
+            <strong style="color:#172033">&lt;title&gt; My Website &lt;/title&gt;</strong>
+            <span style="margin-left:7px">→ appears in the browser tab, not inside the page.</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+        <span class="pill" style="background:#fff9db"><i data-lucide="panel-top" width="14"></i> Title → browser tab</span>
+        <span class="pill" style="background:#effbf2"><i data-lucide="monitor" width="14"></i> Body → webpage</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Next chapter → Tags, Elements &amp; Attributes</span><span class="hint"><kbd>F</kbd> Fullscreen</span></div>
+</section>
+
+<div class="controls">
+  <button class="ctrl" id="prev" title="Previous"><i data-lucide="chevron-left" width="17"></i></button>
+  <button class="ctrl" id="next" title="Next"><i data-lucide="chevron-right" width="17"></i></button>
+  <button class="ctrl" id="fs" title="Fullscreen"><i data-lucide="maximize-2" width="15"></i></button>
+</div>
+<div class="progress" id="progress"></div>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let index=0;
+function render(){
+  slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+  document.getElementById('progress').style.width=((index+1)/slides.length*100)+'%';
+  if(window.lucide) lucide.createIcons();
+}
+function next(){index=Math.min(slides.length-1,index+1);render()}
+function prev(){index=Math.max(0,index-1);render()}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key==='Home'){e.preventDefault();index=0;render()}
+  else if(e.key==='End'){e.preventDefault();index=slides.length-1;render()}
+  else if(e.key.toLowerCase()==='f'){e.preventDefault();toggleFullscreen()}
+});
+document.getElementById('next').onclick=next;
+document.getElementById('prev').onclick=prev;
+document.getElementById('fs').onclick=toggleFullscreen;
+function toggleFullscreen(){
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+slides.forEach((s,i)=>{
+  s.addEventListener('click',e=>{
+    if(e.target.closest('.controls,.footer,a,button,kbd'))return;
+    if(i===index)next();
+  });
+});
+render();
+</script>
+</body>
+</html>

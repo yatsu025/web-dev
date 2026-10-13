@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="base" content="__ADMIN__"><title>Admin · Chapters</title>
+<style nonce="__NONCE__">
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#f4f1de;font-family:system-ui,Arial,sans-serif;color:#202124;overflow-wrap:anywhere}
+header{background:#fff;border-bottom:2px solid #222;position:sticky;top:0;z-index:5}
+.w{width:min(1100px,calc(100% - 28px));margin:auto}
+.top{display:flex;align-items:center;justify-content:space-between;min-height:62px;gap:10px;flex-wrap:wrap;padding:8px 0}
+h1{margin:0;font-size:20px}
+.btn{border:2px solid #222;border-radius:8px;background:#fff;padding:9px 13px;min-height:40px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:3px 3px 0 #222;color:#222;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #222}.ok{background:#7bd88f}.no{background:#ff8b8b}
+.warn{display:none;margin-top:16px;background:#fff3cd;border:2px solid #222;border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.45}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.st{background:#fff;border:2px solid #222;border-radius:12px;padding:12px 14px;box-shadow:4px 4px 0 #222}
+.st b{display:block;font-size:26px}.st span{font-size:11px;color:#666;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.bar input{flex:1;min-width:160px;padding:11px 12px;border:2px solid #222;border-radius:8px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.c{background:#fff;border:2px solid #222;border-radius:12px;padding:14px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;gap:10px}
+.c.closed{background:#f3e3e3}.c h3{margin:0;font-size:16px;line-height:1.3}
+.meta{font-size:12px;color:#666;display:flex;gap:4px 12px;flex-wrap:wrap}
+.pill{flex:none;padding:2px 9px;border:2px solid #222;border-radius:999px;font-size:11px;font-weight:900}
+.pill.o{background:#7bd88f}.pill.c{background:#ff8b8b}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sw{position:relative;flex:none;width:62px;height:34px;border:2px solid #222;border-radius:999px;background:#ff8b8b;cursor:pointer;padding:0}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #222;transition:.15s}
+.sw.on{background:#7bd88f}.sw.on::after{left:31px}
+h2{font-size:16px;margin:28px 0 10px}
+.log{background:#fff;border:2px solid #222;border-radius:12px;padding:4px 14px;margin-bottom:34px}
+.log div{padding:9px 0;border-bottom:1px dashed #bbb;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.log div:last-child{border:0}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:8px;font-size:14px;opacity:0;transition:.2s;pointer-events:none;max-width:90vw;text-align:center}.toast.show{opacity:1}
+footer{text-align:center;color:#777;font-size:12px;padding:0 0 30px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:18px}.bar .btn{flex:1}.top .btn{padding:8px 11px}}
+</style></head><body>
+<header><div class="w top"><h1>🛠 Chapter Admin</h1>
+<div style="display:flex;gap:10px"><a class="btn" href="/" target="_blank" rel="noopener">View site</a></div></div></header>
+<main class="w">
+<div class="warn" id="warn">⚠️ <b>Storage connected nahi hai.</b> Open/close changes restart ya redeploy par reset ho jayenge. Vercel me Upstash Redis connect karo (README dekho).</div>
+<div class="stats">
+<div class="st"><b id="sT">-</b><span>Total</span></div><div class="st"><b id="sO">-</b><span>Open</span></div>
+<div class="st"><b id="sC">-</b><span>Closed</span></div><div class="st"><b id="sH">-</b><span>Views</span></div></div>
+<div class="bar"><input id="q" placeholder="Search chapter..." autocomplete="off">
+<button class="btn ok" id="allO">Open all</button><button class="btn no" id="allC">Close all</button></div>
+<div class="grid" id="grid"></div>
+<h2>Recent activity</h2><div class="log" id="log"></div>
+</main><footer>Build by Yash Srivastava</footer><div class="toast" id="t"></div>
+<script nonce="__NONCE__">
+(function(){
+var BASE=document.querySelector('meta[name=base]').content,data=null,$=function(i){return document.getElementById(i)};
+function toast(m){var t=$('t');t.textContent=m;t.className='toast show';setTimeout(function(){t.className='toast'},1800)}
+function api(path,body){return fetch(BASE+path,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json','X-Requested-With':'yadm'},body:body?JSON.stringify(body):undefined}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'error');return j})})}
+function fail(){toast('Error - dobara try karo')}
+function fmt(d){return d?new Date(d).toLocaleString():'never'}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+function render(){
+ if(!data)return;
+ $('warn').style.display=data.persistent?'none':'block';
+ var q=$('q').value.toLowerCase(),g=$('grid');g.textContent='';
+ data.chapters.forEach(function(c){
+  if(q&&c.title.toLowerCase().indexOf(q)<0)return;
+  var d=el('div','c'+(c.open?'':' closed')),r=el('div','row');
+  r.appendChild(el('h3','',c.title));r.appendChild(el('span','pill '+(c.open?'o':'c'),c.open?'OPEN':'CLOSED'));d.appendChild(r);
+  var m=el('div','meta');m.appendChild(el('span','','👁 '+c.hits+' views'));m.appendChild(el('span','','Changed: '+fmt(c.changedAt)));d.appendChild(m);
+  var r2=el('div','row'),sw=el('button','sw'+(c.open?' on':''));sw.setAttribute('aria-label','toggle '+c.title);
+  sw.addEventListener('click',function(){sw.disabled=true;api('/api/chapters/'+c.id,{open:!c.open}).then(function(){toast(c.title+(c.open?' closed':' opened'));return load()}).catch(function(){fail();sw.disabled=false})});
+  var a=el('a','btn','Preview');a.href='/chapter/'+c.id;a.target='_blank';a.rel='noopener';
+  r2.appendChild(sw);r2.appendChild(a);d.appendChild(r2);g.appendChild(d)});
+ var o=data.chapters.filter(function(c){return c.open}).length;
+ $('sT').textContent=data.chapters.length;$('sO').textContent=o;$('sC').textContent=data.chapters.length-o;
+ $('sH').textContent=data.chapters.reduce(function(s,c){return s+c.hits},0);
+ var l=$('log');l.textContent='';if(!data.log.length)l.appendChild(el('div','','No changes yet'));
+ data.log.forEach(function(x){var d=el('div');d.appendChild(el('span','',x.msg));d.appendChild(el('span','',fmt(x.at)));l.appendChild(d)})}
+function load(){return api('/api/chapters').then(function(d){data=d;render()})}
+$('q').addEventListener('input',render);
+$('allO').addEventListener('click',function(){if(confirm('Open ALL chapters?'))api('/api/bulk',{open:true}).then(function(){toast('All opened');return load()}).catch(fail)});
+$('allC').addEventListener('click',function(){if(confirm('Close ALL chapters?'))api('/api/bulk',{open:false}).then(function(){toast('All closed');return load()}).catch(fail)});
+load().catch(fail);setInterval(function(){load().catch(function(){})},20000);
+})();
+</script></body></html>

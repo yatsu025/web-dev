@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML — Chapter 07: Tables</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,Arial,sans-serif;color:#202124;background:#f4f1de}
+.slide{position:absolute;inset:0;display:none;padding:58px 72px 70px}.slide.active{display:block}
+.s1{background:#f4f1de}.s2{background:#e8f3ef}.s3{background:#f7e9d7}.s4{background:#e9edf7}.s5{background:#f4e8ef}.s6{background:#e8f0dc}.s7{background:#f3eadf}
+h1{font-size:64px;line-height:1;margin:0 0 14px;font-weight:850;letter-spacing:-2px}
+h2{font-size:48px;line-height:1.05;margin:0 0 12px;font-weight:850;letter-spacing:-1.5px}
+.kicker{font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c96f28;margin-bottom:13px}
+.sub{font-size:23px;color:#60656b;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:38px;align-items:center;height:calc(100% - 122px)}
+.code{background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px 25px;font:19px/1.65 Consolas,monospace;box-shadow:6px 6px 0 #222}
+.tag{color:#ff9f68}.txt{color:#f1f1f1}.attr{color:#9cdcfe}
+.flow{display:grid;grid-template-columns:1fr 55px 1.25fr;align-items:center;gap:14px}
+.mini,.explain{background:#fff;border:2px solid #222;border-radius:22px;padding:22px;box-shadow:4px 4px 0 #222}
+.mini h3{font-size:27px;margin:0 0 10px}.arrow{font-size:38px;font-weight:900;color:#c96f28;text-align:center}
+.term{color:#c96f28;font-weight:850}
+.browser{background:#fff;border:2px solid #222;border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 #222}
+.bar{height:43px;background:#eee;border-bottom:2px solid #222;display:flex;align-items:center;padding:0 14px;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid #222}
+.address{margin-left:10px;background:#fff;border:1px solid #bbb;border-radius:8px;padding:5px 12px;flex:1;color:#777;font-size:13px}
+.page{padding:25px;min-height:245px}
+.explain{position:absolute;left:72px;right:72px;bottom:56px;font-size:17px;line-height:1.45;box-shadow:3px 3px 0 #222}
+.explain b{color:#c96f28}
+.cover{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}.coverBox{max-width:1000px}
+.cover .label{display:inline-block;padding:10px 18px;border:2px solid #222;border-radius:999px;background:#fff;font-weight:800;margin-bottom:24px}
+.cover h1{font-size:90px}.cover .sub{font-size:28px}.by{margin-top:38px;font-weight:800;font-size:19px}
+.footer{position:absolute;left:72px;right:72px;bottom:20px;display:flex;justify-content:space-between;font-size:13px;color:#666}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:#c96f28;width:0;z-index:30}
+.nav{position:fixed;right:25px;bottom:20px;z-index:40;display:flex;gap:8px}
+.nav button{width:42px;height:38px;border:2px solid #222;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
+.demo-img{width:100%;height:145px;border:2px solid #222;border-radius:14px;object-fit:cover;background:#ddd}
+.path{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;flex-wrap:wrap}.folder{background:#f7d59a;border:2px solid #222;border-radius:10px;padding:9px 13px}
+@media(max-width:900px){.slide{overflow:auto}h1{font-size:45px}h2{font-size:36px}.grid{grid-template-columns:1fr}.cover h1{font-size:65px}}
+</style>
+
+<style>
+.tableDemo{width:100%;border-collapse:collapse;background:#fff;font-size:17px}
+.tableDemo th,.tableDemo td{border:2px solid #202124;padding:10px 13px;text-align:left}
+.tableDemo th{font-weight:850;background:#f4f1de}
+</style>
+
+</head>
+<body>
+
+
+<section class="slide active s1">
+<div class="cover"><div class="coverBox">
+<div class="label">CHAPTER 07</div>
+<h1>HTML<br><span style="color:#c96f28">Tables</span></h1>
+<div class="sub">Table · Rows & Columns · Head & Body · Colspan & Rowspan · Practical Table</div>
+<div class="by">By Yash Srivastava & Shivam Srivastava</div>
+</div></div>
+</section>
+
+<section class="slide s2">
+<div class="kicker">01 · TABLE</div>
+<h2>What is an HTML Table?</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Beginner</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;table&gt;</span></h3>
+<p style="font-size:19px">Creates the table container.</p>
+<h3><span class="term">&lt;tr&gt;</span></h3>
+<p style="font-size:19px">Creates one <b>Table Row</b>.</p>
+<h3><span class="term">&lt;td&gt;</span></h3>
+<p style="font-size:19px">Creates a <b>Table Data</b> cell.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">table.html</div></div>
+<div class="page"><div style="font-size:28px;font-weight:850;margin-bottom:14px">Course</div>
+<table class="tableDemo"><tr><td>HTML</td><td>Beginner</td></tr></table></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> An HTML <b>table</b> displays structured information using rows and columns. The basic building blocks are <span class="term">&lt;table&gt;</span>, <span class="term">&lt;tr&gt;</span> and <span class="term">&lt;td&gt;</span>.</div>
+</section>
+
+<section class="slide s3">
+<div class="kicker">02 · Rows & Columns</div>
+<h2>Rows & Columns</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Name</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Course</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Aman</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;tr&gt;</span> = Table Row</h3>
+<p style="font-size:18px">Every <span class="term">&lt;tr&gt;</span> starts a new horizontal row.</p>
+<h3><span class="term">&lt;td&gt;</span> = Table Data</h3>
+<p style="font-size:18px">Every <span class="term">&lt;td&gt;</span> creates a cell inside that row.</p>
+<p style="font-size:18px;color:#666">Same position across rows forms a column.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">students.html</div></div>
+<div class="page"><table class="tableDemo">
+<tr><td>Name</td><td>Course</td></tr>
+<tr><td>Aman</td><td>HTML</td></tr>
+</table><div style="margin-top:13px;font-size:14px;color:#666;font-weight:700">2 rows × 2 columns</div></div></div>
+</div>
+</div>
+<div class="explain"><b>Remember:</b> A <b>row</b> is horizontal, while a <b>column</b> is vertical. Multiple rows can use the same column structure to keep related information aligned.</div>
+</section>
+
+<section class="slide s4">
+<div class="kicker">03 · Table Head & Body</div>
+<h2>Table Head & Table Body</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;thead&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span><span class="txt">Name</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span><span class="txt">Marks</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/thead&gt;</span><br><br>
+&nbsp;&nbsp;<span class="tag">&lt;tbody&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Aman</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">92</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tbody&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;thead&gt;</span></h3>
+<p style="font-size:18px">Groups the table's heading rows.</p>
+<h3><span class="term">&lt;th&gt;</span> = Table Header</h3>
+<p style="font-size:18px">Labels what a column contains.</p>
+<h3><span class="term">&lt;tbody&gt;</span></h3>
+<p style="font-size:18px">Groups the main data rows.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">marks.html</div></div>
+<div class="page"><table class="tableDemo">
+<thead><tr><th>Name</th><th>Marks</th></tr></thead>
+<tbody><tr><td>Aman</td><td>92</td></tr></tbody>
+</table></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> <span class="term">&lt;thead&gt;</span> organizes the heading section and <span class="term">&lt;tbody&gt;</span> organizes the main data. Use <span class="term">&lt;th&gt;</span> for cells that describe the columns.</div>
+</section>
+
+<section class="slide s5">
+<div class="kicker">04 · Colspan & Rowspan</div>
+<h2>Merge Table Cells</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th</span> <span class="attr">colspan="2"</span><span class="tag">&gt;</span><span class="txt">Student</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td</span> <span class="attr">rowspan="2"</span><span class="tag">&gt;</span><span class="txt">Aman</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br><br>
+&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">CSS</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">colspan</span></h3>
+<p style="font-size:18px">Makes one cell cover multiple <b>columns</b>.</p>
+<div class="term">colspan="2"</div>
+<hr>
+<h3><span class="term">rowspan</span></h3>
+<p style="font-size:18px">Makes one cell cover multiple <b>rows</b>.</p>
+<div class="term">rowspan="2"</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">span-demo.html</div></div>
+<div class="page"><table class="tableDemo">
+<tr><th colspan="2">Student</th></tr>
+<tr><td rowspan="2">Aman</td><td>HTML</td></tr>
+<tr><td>CSS</td></tr>
+</table></div></div>
+</div>
+</div>
+<div class="explain"><b>Remember:</b> <span class="term">colspan</span> merges a cell across columns. <span class="term">rowspan</span> merges a cell across rows. The number tells the browser how many columns or rows the cell should occupy.</div>
+</section>
+
+<section class="slide s6">
+<div class="kicker">05 · Practical Table</div>
+<h2>Build a Simple Product Table</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;table&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;thead&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span><span class="txt">Product</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span><span class="txt">Price</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;th&gt;</span><span class="txt">Stock</span><span class="tag">&lt;/th&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/thead&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;tbody&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Keyboard</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">₹799</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">12</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;tr&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">Mouse</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">₹499</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;td&gt;</span><span class="txt">25</span><span class="tag">&lt;/td&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/tr&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/tbody&gt;</span><br>
+<span class="tag">&lt;/table&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>Real-world use</h3>
+<p style="font-size:18px">Tables are useful for product lists, marksheets, invoices, reports and dashboards.</p>
+<h3>Structure</h3>
+<p style="font-size:18px"><span class="term">table</span> → <span class="term">thead / tbody</span> → <span class="term">tr</span> → <span class="term">th / td</span></p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">shop.example/products</div></div>
+<div class="page"><div style="font-size:27px;font-weight:850;margin-bottom:12px">Products</div>
+<table class="tableDemo">
+<thead><tr><th>Product</th><th>Price</th><th>Stock</th></tr></thead>
+<tbody><tr><td>Keyboard</td><td>₹799</td><td>12</td></tr><tr><td>Mouse</td><td>₹499</td><td>25</td></tr></tbody>
+</table></div></div>
+</div>
+</div>
+<div class="explain"><b>Final idea:</b> First create the table structure, then place headings and data inside rows. CSS can later control borders, spacing, colors and the visual design.</div>
+</section>
+
+<div class="progress" id="progress"></div>
+<div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function show(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function next(){show(current+1)}function prev(){show(current-1)}
+document.addEventListener('keydown',e=>{
+if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()
+});
+document.addEventListener('click',e=>{if(e.target.closest('.nav,button,a'))return;next()});show(0);
+</script>
+</body>
+</html>

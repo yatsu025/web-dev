@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tags & Meaning — Complete Reference</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>HTML Tags & Their Meaning</h1>
+
+        <p>
+            A complete beginner-friendly reference of modern HTML elements,
+            grouped by their purpose.
+        </p>
+
+        <p>
+            <strong>HTML</strong> = HyperText Markup Language
+        </p>
+
+        <hr>
+    </header>
+
+
+    <main>
+
+        <section>
+            <h2>How to Read This Page</h2>
+
+            <p>
+                <strong>Tag:</strong> The HTML element name.
+            </p>
+
+            <p>
+                <strong>Meaning:</strong> What the element represents or does.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A simple way to use the element.
+            </p>
+
+            <p>
+                <strong>Void element:</strong> An element that does not use a
+                closing tag, such as <code>&lt;img&gt;</code> or
+                <code>&lt;br&gt;</code>.
+            </p>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 1. DOCUMENT -->
+
+        <section>
+            <h2>1. Document & Root</h2>
+
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;html&gt;</code></td>
+                        <td>Root element of the complete HTML document.</td>
+                        <td><code>&lt;html lang="en"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;head&gt;</code></td>
+                        <td>Contains page metadata and resources that are not the main visible page content.</td>
+                        <td><code>&lt;head&gt;...&lt;/head&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;body&gt;</code></td>
+                        <td>Contains the visible content of the web page.</td>
+                        <td><code>&lt;body&gt;Hello&lt;/body&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                        <td>Document type declaration that tells the browser to use modern HTML parsing.</td>
+                        <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 2. HEAD -->
+
+        <section>
+            <h2>2. Document Metadata</h2>
+
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;title&gt;</code></td>
+                        <td>Sets the title shown in the browser tab.</td>
+                        <td><code>&lt;title&gt;My Website&lt;/title&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;meta&gt;</code></td>
+                        <td>Provides metadata such as character encoding, viewport and description.</td>
+                        <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;link&gt;</code></td>
+                        <td>Connects the document with an external resource such as a stylesheet or icon.</td>
+                        <td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;style&gt;</code></td>
+                        <td>Contains CSS rules inside the HTML document.</td>
+                        <td><code>&lt;style&gt;...&lt;/style&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;base&gt;</code></td>
+                        <td>Sets the base URL used for relative URLs in a document.</td>
+                        <td><code>&lt;base href="https://example.com/"&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 3. SEMANTIC -->
+
+        <section>
+            <h2>3. Semantic & Page Structure</h2>
+
+            <p>
+                Semantic elements describe the meaning or role of content,
+                instead of being only generic containers.
+            </p>
+
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;header&gt;</code></td>
+                        <td>Introductory content for a page or section, often containing a logo, heading or navigation.</td>
+                        <td><code>&lt;header&gt;...&lt;/header&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;nav&gt;</code></td>
+                        <td>Contains important navigation links.</td>
+                        <td><code>&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/nav&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;main&gt;</code></td>
+                        <td>Contains the dominant main content of the document.</td>
+                        <td><code>&lt;main&gt;...&lt;/main&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;section&gt;</code></td>
+                        <td>Groups related content into a meaningful section.</td>
+                        <td><code>&lt;section&gt;About&lt;/section&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;article&gt;</code></td>
+                        <td>Represents self-contained content that can make sense independently.</td>
+                        <td><code>&lt;article&gt;Blog Post&lt;/article&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;aside&gt;</code></td>
+                        <td>Contains content indirectly related to the main content, such as a sidebar or related information.</td>
+                        <td><code>&lt;aside&gt;Related Links&lt;/aside&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;footer&gt;</code></td>
+                        <td>Footer for a page or section.</td>
+                        <td><code>&lt;footer&gt;Copyright&lt;/footer&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;address&gt;</code></td>
+                        <td>Provides contact information for a page or article.</td>
+                        <td><code>&lt;address&gt;Email: hello@example.com&lt;/address&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;search&gt;</code></td>
+                        <td>Represents a section containing controls related to searching or filtering.</td>
+                        <td><code>&lt;search&gt;...&lt;/search&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;hgroup&gt;</code></td>
+                        <td>Groups a heading with related secondary content such as a subtitle or tagline.</td>
+                        <td><code>&lt;hgroup&gt;...&lt;/hgroup&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 4. HEADINGS -->
+
+        <section>
+            <h2>4. Headings</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;h1&gt;</code></td>
+                        <td>Highest-level heading.</td>
+                        <td><code>&lt;h1&gt;Website Title&lt;/h1&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;h2&gt;</code></td>
+                        <td>Second-level heading.</td>
+                        <td><code>&lt;h2&gt;About&lt;/h2&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;h3&gt;</code></td>
+                        <td>Third-level heading.</td>
+                        <td><code>&lt;h3&gt;Skills&lt;/h3&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;h4&gt;</code></td>
+                        <td>Fourth-level heading.</td>
+                        <td><code>&lt;h4&gt;HTML&lt;/h4&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;h5&gt;</code></td>
+                        <td>Fifth-level heading.</td>
+                        <td><code>&lt;h5&gt;Details&lt;/h5&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;h6&gt;</code></td>
+                        <td>Sixth-level heading.</td>
+                        <td><code>&lt;h6&gt;Note&lt;/h6&gt;</code></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 5. TEXT -->
+
+        <section>
+            <h2>5. Text & Content</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;p&gt;</code></td>
+                        <td>Paragraph of text.</td>
+                        <td><code>&lt;p&gt;Hello World&lt;/p&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;br&gt;</code></td>
+                        <td>Creates a line break. Void element.</td>
+                        <td><code>Hello&lt;br&gt;World</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;hr&gt;</code></td>
+                        <td>Represents a thematic break between topics or sections. Void element.</td>
+                        <td><code>&lt;hr&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;div&gt;</code></td>
+                        <td>Generic block container with no special semantic meaning.</td>
+                        <td><code>&lt;div&gt;Content&lt;/div&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;span&gt;</code></td>
+                        <td>Generic inline container with no special semantic meaning.</td>
+                        <td><code>&lt;span&gt;Text&lt;/span&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;pre&gt;</code></td>
+                        <td>Displays preformatted text while preserving whitespace.</td>
+                        <td><code>&lt;pre&gt;  Hello&lt;/pre&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;blockquote&gt;</code></td>
+                        <td>Represents an extended quotation.</td>
+                        <td><code>&lt;blockquote&gt;A quote&lt;/blockquote&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;q&gt;</code></td>
+                        <td>Represents a short inline quotation.</td>
+                        <td><code>&lt;q&gt;Hello&lt;/q&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;cite&gt;</code></td>
+                        <td>Identifies the title of a creative work or a citation.</td>
+                        <td><code>&lt;cite&gt;Book Title&lt;/cite&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;abbr&gt;</code></td>
+                        <td>Represents an abbreviation or acronym.</td>
+                        <td><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;code&gt;</code></td>
+                        <td>Represents a short piece of computer code.</td>
+                        <td><code>&lt;code&gt;console.log()&lt;/code&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;kbd&gt;</code></td>
+                        <td>Represents user keyboard input.</td>
+                        <td><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;samp&gt;</code></td>
+                        <td>Represents sample output from a computer program.</td>
+                        <td><code>&lt;samp&gt;File saved&lt;/samp&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;var&gt;</code></td>
+                        <td>Represents a variable in a mathematical or programming expression.</td>
+                        <td><code>&lt;var&gt;x&lt;/var&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 6. TEXT SEMANTICS -->
+
+        <section>
+            <h2>6. Inline Text Semantics</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;strong&gt;</code></td>
+                        <td>Marks text as having strong importance.</td>
+                        <td><code>&lt;strong&gt;Important&lt;/strong&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;em&gt;</code></td>
+                        <td>Marks text with emphasis.</td>
+                        <td><code>&lt;em&gt;Very important&lt;/em&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;b&gt;</code></td>
+                        <td>Draws attention to text without adding strong importance.</td>
+                        <td><code>&lt;b&gt;Keyword&lt;/b&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;i&gt;</code></td>
+                        <td>Represents text in an alternate voice or mood, such as a technical term.</td>
+                        <td><code>&lt;i&gt;HTML&lt;/i&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;u&gt;</code></td>
+                        <td>Represents text with an annotation or non-textual indication.</td>
+                        <td><code>&lt;u&gt;Word&lt;/u&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;s&gt;</code></td>
+                        <td>Represents content that is no longer accurate or relevant.</td>
+                        <td><code>&lt;s&gt;₹999&lt;/s&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;mark&gt;</code></td>
+                        <td>Highlights text because it is relevant to the current context.</td>
+                        <td><code>&lt;mark&gt;Important&lt;/mark&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;small&gt;</code></td>
+                        <td>Represents side comments or small print.</td>
+                        <td><code>&lt;small&gt;Terms apply&lt;/small&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;sub&gt;</code></td>
+                        <td>Displays subscript text.</td>
+                        <td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;sup&gt;</code></td>
+                        <td>Displays superscript text.</td>
+                        <td><code>x&lt;sup&gt;2&lt;/sup&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;time&gt;</code></td>
+                        <td>Represents a date or time.</td>
+                        <td><code>&lt;time&gt;10:00&lt;/time&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;data&gt;</code></td>
+                        <td>Associates visible content with a machine-readable value.</td>
+                        <td><code>&lt;data value="101"&gt;Product&lt;/data&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dfn&gt;</code></td>
+                        <td>Marks the defining instance of a term.</td>
+                        <td><code>&lt;dfn&gt;HTML&lt;/dfn&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;bdi&gt;</code></td>
+                        <td>Isolates text direction from surrounding text.</td>
+                        <td><code>&lt;bdi&gt;User123&lt;/bdi&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;bdo&gt;</code></td>
+                        <td>Overrides the text direction.</td>
+                        <td><code>&lt;bdo dir="rtl"&gt;Hello&lt;/bdo&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;ruby&gt;</code></td>
+                        <td>Represents ruby annotation text used with East Asian typography.</td>
+                        <td><code>&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;rt&gt;</code></td>
+                        <td>Provides the ruby annotation text.</td>
+                        <td><code>&lt;rt&gt;kan&lt;/rt&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;rp&gt;</code></td>
+                        <td>Provides fallback parentheses for ruby annotations.</td>
+                        <td><code>&lt;rp&gt;(&lt;/rp&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;wbr&gt;</code></td>
+                        <td>Suggests a possible line-break position.</td>
+                        <td><code>verylongword&lt;wbr&gt;example</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 7. LINKS -->
+
+        <section>
+            <h2>7. Links & Navigation</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;a&gt;</code></td>
+                        <td>Creates a hyperlink to another page, file, location or resource.</td>
+                        <td><code>&lt;a href="about.html"&gt;About&lt;/a&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;map&gt;</code></td>
+                        <td>Defines an image map containing clickable areas.</td>
+                        <td><code>&lt;map name="campus"&gt;...&lt;/map&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;area&gt;</code></td>
+                        <td>Defines a clickable area inside an image map. Void element.</td>
+                        <td><code>&lt;area href="lab.html" shape="rect"&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 8. IMAGES -->
+
+        <section>
+            <h2>8. Images & Figures</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;img&gt;</code></td>
+                        <td>Embeds an image. Void element.</td>
+                        <td><code>&lt;img src="photo.jpg" alt="Photo"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;figure&gt;</code></td>
+                        <td>Groups self-contained content such as an image, diagram or code example.</td>
+                        <td><code>&lt;figure&gt;...&lt;/figure&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;figcaption&gt;</code></td>
+                        <td>Provides a caption for a figure.</td>
+                        <td><code>&lt;figcaption&gt;Campus Photo&lt;/figcaption&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;picture&gt;</code></td>
+                        <td>Provides alternative image sources for different conditions or devices.</td>
+                        <td><code>&lt;picture&gt;...&lt;/picture&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 9. AUDIO VIDEO -->
+
+        <section>
+            <h2>9. Audio, Video & Media</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;audio&gt;</code></td>
+                        <td>Embeds audio content.</td>
+                        <td><code>&lt;audio controls&gt;...&lt;/audio&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;video&gt;</code></td>
+                        <td>Embeds video content.</td>
+                        <td><code>&lt;video controls&gt;...&lt;/video&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;source&gt;</code></td>
+                        <td>Provides an alternative media source for audio, video or picture.</td>
+                        <td><code>&lt;source src="video.mp4"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;track&gt;</code></td>
+                        <td>Provides timed text such as subtitles or captions for media.</td>
+                        <td><code>&lt;track kind="subtitles" src="en.vtt"&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 10. EMBEDDED -->
+
+        <section>
+            <h2>10. Embedded Content</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;iframe&gt;</code></td>
+                        <td>Embeds another HTML document inside the current page.</td>
+                        <td><code>&lt;iframe src="page.html"&gt;&lt;/iframe&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;embed&gt;</code></td>
+                        <td>Embeds external content.</td>
+                        <td><code>&lt;embed src="file.pdf"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;object&gt;</code></td>
+                        <td>Represents an external resource.</td>
+                        <td><code>&lt;object data="file.pdf"&gt;&lt;/object&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;canvas&gt;</code></td>
+                        <td>Provides a drawing surface that can be controlled with scripts.</td>
+                        <td><code>&lt;canvas&gt;&lt;/canvas&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 11. LISTS -->
+
+        <section>
+            <h2>11. Lists</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;ul&gt;</code></td>
+                        <td>Unordered list, normally shown with bullets.</td>
+                        <td><code>&lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;/ul&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;ol&gt;</code></td>
+                        <td>Ordered list, normally shown with numbers or letters.</td>
+                        <td><code>&lt;ol&gt;&lt;li&gt;Step 1&lt;/li&gt;&lt;/ol&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;li&gt;</code></td>
+                        <td>Represents an item inside a list.</td>
+                        <td><code>&lt;li&gt;HTML&lt;/li&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dl&gt;</code></td>
+                        <td>Description list containing terms and descriptions.</td>
+                        <td><code>&lt;dl&gt;...&lt;/dl&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dt&gt;</code></td>
+                        <td>Term inside a description list.</td>
+                        <td><code>&lt;dt&gt;HTML&lt;/dt&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dd&gt;</code></td>
+                        <td>Description or value for a term in a description list.</td>
+                        <td><code>&lt;dd&gt;Markup language&lt;/dd&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;menu&gt;</code></td>
+                        <td>Represents an unordered list of items, semantically similar to <code>&lt;ul&gt;</code>.</td>
+                        <td><code>&lt;menu&gt;&lt;li&gt;Save&lt;/li&gt;&lt;/menu&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 12. TABLES -->
+
+        <section>
+            <h2>12. Tables</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;table&gt;</code></td>
+                        <td>Creates a table.</td>
+                        <td><code>&lt;table&gt;...&lt;/table&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;caption&gt;</code></td>
+                        <td>Provides a title or caption for a table.</td>
+                        <td><code>&lt;caption&gt;Students&lt;/caption&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;thead&gt;</code></td>
+                        <td>Groups the header rows of a table.</td>
+                        <td><code>&lt;thead&gt;...&lt;/thead&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;tbody&gt;</code></td>
+                        <td>Groups the main data rows of a table.</td>
+                        <td><code>&lt;tbody&gt;...&lt;/tbody&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;tfoot&gt;</code></td>
+                        <td>Groups footer rows of a table.</td>
+                        <td><code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;tr&gt;</code></td>
+                        <td>Creates a table row.</td>
+                        <td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;th&gt;</code></td>
+                        <td>Creates a header cell.</td>
+                        <td><code>&lt;th&gt;Name&lt;/th&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;td&gt;</code></td>
+                        <td>Creates a normal data cell.</td>
+                        <td><code>&lt;td&gt;Yash&lt;/td&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;colgroup&gt;</code></td>
+                        <td>Groups one or more table columns.</td>
+                        <td><code>&lt;colgroup&gt;...&lt;/colgroup&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;col&gt;</code></td>
+                        <td>Defines properties for one or more columns. Void element.</td>
+                        <td><code>&lt;col span="2"&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <p>
+                Common table attributes include <code>colspan</code> for
+                spanning columns and <code>rowspan</code> for spanning rows.
+            </p>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 13. FORMS -->
+
+        <section>
+            <h2>13. Forms & User Input</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;form&gt;</code></td>
+                        <td>Groups controls used to collect and submit user data.</td>
+                        <td><code>&lt;form&gt;...&lt;/form&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;input&gt;</code></td>
+                        <td>Creates many types of single-line and interactive form controls.</td>
+                        <td><code>&lt;input type="text"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;label&gt;</code></td>
+                        <td>Provides a caption for a form control.</td>
+                        <td><code>&lt;label for="email"&gt;Email&lt;/label&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;textarea&gt;</code></td>
+                        <td>Creates a multi-line text input.</td>
+                        <td><code>&lt;textarea&gt;...&lt;/textarea&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;button&gt;</code></td>
+                        <td>Creates a clickable button.</td>
+                        <td><code>&lt;button&gt;Submit&lt;/button&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;select&gt;</code></td>
+                        <td>Creates a menu of options.</td>
+                        <td><code>&lt;select&gt;...&lt;/select&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;option&gt;</code></td>
+                        <td>Represents one selectable option.</td>
+                        <td><code>&lt;option&gt;India&lt;/option&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;optgroup&gt;</code></td>
+                        <td>Groups related options inside a select menu.</td>
+                        <td><code>&lt;optgroup label="Asia"&gt;...&lt;/optgroup&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;datalist&gt;</code></td>
+                        <td>Provides suggested options for an input.</td>
+                        <td><code>&lt;datalist id="cities"&gt;...&lt;/datalist&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;fieldset&gt;</code></td>
+                        <td>Groups related form controls.</td>
+                        <td><code>&lt;fieldset&gt;...&lt;/fieldset&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;legend&gt;</code></td>
+                        <td>Provides a caption for a fieldset.</td>
+                        <td><code>&lt;legend&gt;Personal Details&lt;/legend&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;output&gt;</code></td>
+                        <td>Represents the result of a calculation or user action.</td>
+                        <td><code>&lt;output&gt;100&lt;/output&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;progress&gt;</code></td>
+                        <td>Displays progress toward completion of a task.</td>
+                        <td><code>&lt;progress value="70" max="100"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;meter&gt;</code></td>
+                        <td>Represents a scalar measurement within a known range.</td>
+                        <td><code>&lt;meter value="7" min="0" max="10"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;selectedcontent&gt;</code></td>
+                        <td>Displays the currently selected option's content inside a closed select control where supported.</td>
+                        <td><code>&lt;selectedcontent&gt;&lt;/selectedcontent&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 14. INPUT TYPES -->
+
+        <section>
+            <h2>14. Common &lt;input&gt; Types</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>text</code></td>
+                        <td>Single-line text.</td>
+                        <td><code>&lt;input type="text"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>email</code></td>
+                        <td>Email address input.</td>
+                        <td><code>&lt;input type="email"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>password</code></td>
+                        <td>Password input.</td>
+                        <td><code>&lt;input type="password"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>Numeric input.</td>
+                        <td><code>&lt;input type="number"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>tel</code></td>
+                        <td>Telephone number input.</td>
+                        <td><code>&lt;input type="tel"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>url</code></td>
+                        <td>URL input.</td>
+                        <td><code>&lt;input type="url"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>search</code></td>
+                        <td>Search field.</td>
+                        <td><code>&lt;input type="search"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>date</code></td>
+                        <td>Date picker.</td>
+                        <td><code>&lt;input type="date"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>time</code></td>
+                        <td>Time input.</td>
+                        <td><code>&lt;input type="time"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>datetime-local</code></td>
+                        <td>Local date and time input.</td>
+                        <td><code>&lt;input type="datetime-local"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>month</code></td>
+                        <td>Month and year input.</td>
+                        <td><code>&lt;input type="month"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>week</code></td>
+                        <td>Week and year input.</td>
+                        <td><code>&lt;input type="week"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>color</code></td>
+                        <td>Color picker.</td>
+                        <td><code>&lt;input type="color"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>range</code></td>
+                        <td>Range slider.</td>
+                        <td><code>&lt;input type="range"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>checkbox</code></td>
+                        <td>Allows zero or more selections.</td>
+                        <td><code>&lt;input type="checkbox"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>radio</code></td>
+                        <td>Allows one selection from a group.</td>
+                        <td><code>&lt;input type="radio"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>file</code></td>
+                        <td>Allows the user to select a file.</td>
+                        <td><code>&lt;input type="file"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>hidden</code></td>
+                        <td>Stores a value that is not displayed as a normal control.</td>
+                        <td><code>&lt;input type="hidden"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>submit</code></td>
+                        <td>Submit button for a form.</td>
+                        <td><code>&lt;input type="submit"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>reset</code></td>
+                        <td>Resets form controls to their initial values.</td>
+                        <td><code>&lt;input type="reset"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>button</code></td>
+                        <td>Generic button control.</td>
+                        <td><code>&lt;input type="button" value="Click"&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>image</code></td>
+                        <td>Image-based form submission button.</td>
+                        <td><code>&lt;input type="image" src="send.png"&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 15. DETAILS -->
+
+        <section>
+            <h2>15. Interactive Elements</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;details&gt;</code></td>
+                        <td>Creates a disclosure widget that can be opened and closed.</td>
+                        <td><code>&lt;details&gt;...&lt;/details&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;summary&gt;</code></td>
+                        <td>Provides the visible heading for a details disclosure.</td>
+                        <td><code>&lt;summary&gt;More Info&lt;/summary&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dialog&gt;</code></td>
+                        <td>Represents a dialog box or other interactive modal-like component.</td>
+                        <td><code>&lt;dialog open&gt;Hello&lt;/dialog&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 16. EDITS -->
+
+        <section>
+            <h2>16. Document Changes</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;ins&gt;</code></td>
+                        <td>Represents text that has been added to a document.</td>
+                        <td><code>&lt;ins&gt;New text&lt;/ins&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;del&gt;</code></td>
+                        <td>Represents text that has been deleted from a document.</td>
+                        <td><code>&lt;del&gt;Old text&lt;/del&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 17. WEB COMPONENTS -->
+
+        <section>
+            <h2>17. Web Components</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;template&gt;</code></td>
+                        <td>Stores HTML that is not rendered immediately and can be instantiated later.</td>
+                        <td><code>&lt;template&gt;...&lt;/template&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;slot&gt;</code></td>
+                        <td>Defines a placeholder for content inside a Web Component.</td>
+                        <td><code>&lt;slot&gt;&lt;/slot&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 18. SCRIPTING -->
+
+        <section>
+            <h2>18. Scripting</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Meaning / Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;script&gt;</code></td>
+                        <td>Embeds or references executable code, commonly JavaScript.</td>
+                        <td><code>&lt;script&gt;...&lt;/script&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;noscript&gt;</code></td>
+                        <td>Provides HTML content for situations where scripting is unavailable or disabled.</td>
+                        <td><code>&lt;noscript&gt;Enable JavaScript&lt;/noscript&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 19. SVG MATH -->
+
+        <section>
+            <h2>19. SVG & MathML Entry Elements</h2>
+
+            <p>
+                SVG and MathML are separate markup languages that can be
+                embedded in HTML. Their elements are not ordinary HTML
+                elements, but you will commonly encounter their root
+                elements inside HTML documents.
+            </p>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;svg&gt;</code></td>
+                        <td>Root element for inline Scalable Vector Graphics.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;math&gt;</code></td>
+                        <td>Root element for MathML mathematical markup.</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 20. OBSOLETE -->
+
+        <section>
+            <h2>20. Obsolete / Deprecated HTML Tags</h2>
+
+            <p>
+                These tags are listed for recognition and legacy code only.
+                They should generally not be used in new projects.
+                Modern HTML uses CSS and semantic elements instead.
+            </p>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Old Tag</th>
+                        <th>Old Purpose</th>
+                        <th>Modern Approach</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>&lt;center&gt;</code></td>
+                        <td>Centered content.</td>
+                        <td>Use CSS <code>text-align</code> or layout properties.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;font&gt;</code></td>
+                        <td>Changed font appearance.</td>
+                        <td>Use CSS.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;big&gt;</code></td>
+                        <td>Displayed larger text.</td>
+                        <td>Use CSS.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;strike&gt;</code></td>
+                        <td>Displayed struck-through text.</td>
+                        <td>Use <code>&lt;s&gt;</code> or CSS depending on meaning.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;tt&gt;</code></td>
+                        <td>Displayed teletype-style text.</td>
+                        <td>Use <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code> or CSS according to meaning.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;acronym&gt;</code></td>
+                        <td>Marked an acronym.</td>
+                        <td>Use <code>&lt;abbr&gt;</code>.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;dir&gt;</code></td>
+                        <td>Old directory list.</td>
+                        <td>Use <code>&lt;ul&gt;</code>.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;frame&gt;</code></td>
+                        <td>Created a frame inside a frameset.</td>
+                        <td>Use modern page structure or <code>&lt;iframe&gt;</code> when embedding is actually required.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;frameset&gt;</code></td>
+                        <td>Defined a collection of frames.</td>
+                        <td>Use modern HTML layout and CSS.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;noframes&gt;</code></td>
+                        <td>Fallback content for old frame-based pages.</td>
+                        <td>Use modern HTML structure.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;marquee&gt;</code></td>
+                        <td>Created scrolling text or content.</td>
+                        <td>Use CSS animations or JavaScript when appropriate.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;acronym&gt;</code></td>
+                        <td>Marked an acronym in older HTML.</td>
+                        <td>Use <code>&lt;abbr&gt;</code>.</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <!-- 21. QUICK CHEAT SHEET -->
+
+        <section>
+            <h2>21. Quick Cheat Sheet</h2>
+
+            <table border="1" cellpadding="8">
+
+                <thead>
+                    <tr>
+                        <th>Need</th>
+                        <th>Use</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Page root</td>
+                        <td><code>&lt;html&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Page information</td>
+                        <td><code>&lt;head&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Visible page</td>
+                        <td><code>&lt;body&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Main heading</td>
+                        <td><code>&lt;h1&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Paragraph</td>
+                        <td><code>&lt;p&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Link</td>
+                        <td><code>&lt;a&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Image</td>
+                        <td><code>&lt;img&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Video</td>
+                        <td><code>&lt;video&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Audio</td>
+                        <td><code>&lt;audio&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>List</td>
+                        <td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Table</td>
+                        <td><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Form</td>
+                        <td><code>&lt;form&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>User input</td>
+                        <td><code>&lt;input&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Dropdown</td>
+                        <td><code>&lt;select&gt;</code>, <code>&lt;option&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Large text input</td>
+                        <td><code>&lt;textarea&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Button</td>
+                        <td><code>&lt;button&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Semantic layout</td>
+                        <td><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Generic container</td>
+                        <td><code>&lt;div&gt;</code> / <code>&lt;span&gt;</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+
+        <hr>
+
+
+        <section>
+            <h2>Important Note</h2>
+
+            <p>
+                HTML has many elements, but you do not need to memorize every
+                tag at once. Learn the common elements first and use a
+                reference like this when you need a less-common element.
+            </p>
+
+            <p>
+                Also remember:
+                <strong>HTML gives meaning and structure</strong>,
+                <strong>CSS controls presentation</strong>, and
+                <strong>JavaScript controls behavior</strong>.
+            </p>
+        </section>
+
+    </main>
+
+
+    <hr>
+
+
+    <footer>
+
+        <p>
+            HTML Tags & Meaning Reference
+        </p>
+
+        <p>
+            Created for HTML learning and Docs reference.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

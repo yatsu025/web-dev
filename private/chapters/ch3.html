@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML — Chapter 03</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,Arial,sans-serif;color:#202124;background:#f4f1de}
+.slide{position:absolute;inset:0;display:none;padding:58px 72px 70px}.slide.active{display:block}
+.s1{background:#f4f1de}.s2{background:#e8f3ef}.s3{background:#f7e9d7}.s4{background:#e9edf7}.s5{background:#f4e8ef}.s6{background:#e8f0dc}.s7{background:#f3eadf}
+h1{font-size:64px;line-height:1;margin:0 0 14px;font-weight:850;letter-spacing:-2px}
+h2{font-size:48px;line-height:1.05;margin:0 0 12px;font-weight:850;letter-spacing:-1.5px}
+.kicker{font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c96f28;margin-bottom:13px}
+.sub{font-size:23px;color:#60656b;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:38px;align-items:center;height:calc(100% - 105px)}
+.card,.mini,.output{background:#fff;border:2px solid #222;border-radius:22px;padding:24px;box-shadow:6px 6px 0 #222}
+.code{background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px 25px;font:20px/1.7 Consolas,monospace}
+.tag{color:#ff9f68}.txt{color:#f1f1f1}.attr{color:#9cdcfe}
+.arrow{font-size:38px;font-weight:900;color:#c96f28;text-align:center}
+.flow{display:grid;grid-template-columns:1fr 55px 1.25fr;align-items:center;gap:14px}
+.browser{background:#fff;border:2px solid #222;border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 #222}
+.bar{height:43px;background:#eee;border-bottom:2px solid #222;display:flex;align-items:center;padding:0 14px;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid #222}.address{margin-left:10px;background:white;border:1px solid #bbb;border-radius:8px;padding:5px 12px;flex:1;color:#777;font-size:13px}
+.page{padding:25px;min-height:245px}.term{color:#c96f28;font-weight:850}.mini h3{font-size:27px;margin:0 0 12px}
+.pill{display:inline-block;background:#f7d59a;border:2px solid #222;border-radius:999px;padding:7px 13px;font-weight:800}
+.tagVisual{display:flex;align-items:center;justify-content:center;gap:0;font:28px Consolas,monospace}
+.tagBox{border:2px solid #222;background:#f8d8bf;border-radius:12px;padding:15px 18px}
+.slash{font-weight:900;color:#c96f28}
+.attrVisual{font-size:27px;line-height:1.7}
+.nest{border:2px solid #222;border-radius:18px;padding:18px;background:#fff}
+.parent{background:#f7d59a;border:2px solid #222;border-radius:13px;padding:14px}
+.child{margin:12px 0 0 24px;background:#e7eef8;border:2px solid #222;border-radius:12px;padding:12px}
+.commentSource{font:19px/1.7 Consolas,monospace;background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px}
+.comment{color:#8fa1b5}.recap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.recap .card{box-shadow:none}
+.cover{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}.coverBox{max-width:1000px}
+.cover .label{display:inline-block;padding:10px 18px;border:2px solid #222;border-radius:999px;background:#fff;font-weight:800;margin-bottom:24px}
+.cover h1{font-size:90px}.cover .sub{font-size:28px}.by{margin-top:38px;font-weight:800;font-size:19px}
+.readBox{position:absolute;left:72px;right:72px;bottom:58px;padding:14px 20px;font-size:17px;line-height:1.45;box-shadow:3px 3px 0 #222}.readBox b:first-child{color:#c96f28}
+.footer{position:absolute;left:72px;right:72px;bottom:23px;display:flex;justify-content:space-between;font-size:14px;color:#666}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:#c96f28;width:0;z-index:30}
+.nav{position:fixed;right:25px;bottom:20px;z-index:40;display:flex;gap:8px}.nav button{width:42px;height:38px;border:2px solid #222;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
+@media(max-width:900px){.slide{overflow:auto}h1{font-size:45px}h2{font-size:36px}.grid{grid-template-columns:1fr}.cover h1{font-size:65px}}
+</style>
+</head>
+<body>
+
+<section class="slide active s1">
+<div class="cover"><div class="coverBox">
+<div class="label">CHAPTER 03</div>
+<h1>HTML<br><span style="color:#c96f28">Building Blocks</span></h1>
+<div class="sub">Tags · Elements · Attributes · Nesting · Comments</div>
+<div class="by">By Yash Srivastava & Shivam Srivastava</div>
+</div></div>
+</section>
+
+<section class="slide s2">
+<div class="kicker">01 · Tags</div><h2>A tag tells HTML what something is</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;h1&gt;</span><span class="txt">Hello World</span><span class="tag">&lt;/h1&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>Tag</h3><div>The text inside <span class="term">&lt; &gt;</span> is the tag.</div><br><span class="pill">h1 = heading tag</span></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">index.html</div></div><div class="page"><div style="font-size:40px;font-weight:850">Hello World</div></div></div>
+</div>
+</div>
+<div class="card readBox"><b>Simple meaning:</b> A tag is a special HTML keyword written inside angle brackets <span class="term">&lt; &gt;</span>. It tells the browser what kind of content it is reading. For example, <span class="term">&lt;h1&gt;</span> tells the browser that the text is a main heading.</div>
+<div class="footer"><span><b>Tag = instruction/name used by HTML</b></span><span>Code → Browser meaning</span></div>
+</section>
+
+<section class="slide s3">
+<div class="kicker">02 · Elements</div><h2>Tag + Content = Element</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;p&gt;</span><span class="txt">I am learning HTML.</span><span class="tag">&lt;/p&gt;</span></div>
+<div class="flow">
+<div class="tagVisual"><div class="tagBox">&lt;p&gt;</div><div class="slash"> + </div><div class="tagBox">Content</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">student.html</div></div><div class="page"><div style="font-size:28px">I am learning HTML.</div></div></div>
+</div>
+</div>
+<div class="card readBox"><b>Simple meaning:</b> An element is the complete piece of HTML — its opening tag, the content inside it, and its closing tag. So <span class="term">&lt;p&gt;Hello&lt;/p&gt;</span> is one paragraph element.</div>
+<div class="footer"><span><b>Element = opening tag + content + closing tag</b></span><span>The complete unit is an element.</span></div>
+</section>
+
+<section class="slide s4">
+<div class="kicker">03 · Opening & Closing Tags</div><h2>Why do we use the slash / ?</h2>
+<div class="grid">
+<div class="card">
+<div class="tagVisual"><div class="tagBox">&lt;p&gt;</div><div class="arrow">→</div><div class="tagBox">&lt;/p&gt;</div></div>
+<div style="margin-top:25px;font-size:22px;line-height:1.5"><b>Opening tag</b> starts the element.<br><b>Closing tag</b> ends the element.<br><span class="term">/</span> tells HTML: “this element ends here.”</div>
+</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">page.html</div></div><div class="page"><h2 style="font-size:32px">My Page</h2><p style="font-size:24px">This text belongs inside the paragraph.</p></div></div>
+</div>
+<div class="card readBox"><b>Remember:</b> Most paired HTML elements have an opening tag and a closing tag. The closing tag contains a forward slash <span class="term">/</span>. This tells the browser where the element ends, so it knows which content belongs inside it.</div>
+<div class="footer"><span><b>&lt;p&gt;</b> = opening · <b>&lt;/p&gt;</b> = closing</span><span>Start → Content → End</span></div>
+</section>
+
+<section class="slide s5">
+<div class="kicker">04 · Attributes</div><h2>Add extra information to a tag</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;a</span> <span class="attr">href="https://example.com"</span><span class="tag">&gt;</span><span class="txt">Visit Website</span><span class="tag">&lt;/a&gt;</span></div>
+<div class="flow">
+<div class="mini attrVisual">
+<span class="term">a</span> → Tag Name<br>
+<span class="term">href</span> → Attribute Name<br>
+<span class="term">"https://example.com"</span> → Attribute Value
+</div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">student.html</div></div><div class="page"><a href="#" onclick="return false" style="font-size:28px;color:#1769aa;font-weight:800">Visit Website</a><p style="color:#666">The <b>href</b> tells the link where to go.</p></div></div>
+</div>
+</div>
+<div class="card readBox"><b>Simple meaning:</b> An attribute gives extra information or settings to an HTML element. In <span class="term">href="https://example.com"</span>, <span class="term">href</span> is the attribute name and the URL is its value. Attributes are written inside the opening tag.</div>
+<div class="footer"><span><b>Attribute = extra information about an element</b></span><span>Name + Value</span></div>
+</section>
+
+<section class="slide s6">
+<div class="kicker">05 · Nested Elements</div><h2>Elements can live inside other elements</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;div&gt;</span><br>&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="txt">My Profile</span><span class="tag">&lt;/h2&gt;</span><br>&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="txt">Student</span><span class="tag">&lt;/p&gt;</span><br><span class="tag">&lt;/div&gt;</span></div>
+<div class="flow">
+<div class="nest"><div class="parent"><b>Parent Element</b> — &lt;div&gt;<div class="child"><b>Child</b> — &lt;h2&gt; My Profile</div><div class="child"><b>Child</b> — &lt;p&gt; Student</div></div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">profile.html</div></div><div class="page"><div style="border:2px solid #222;border-radius:14px;padding:18px"><h2 style="font-size:29px;margin:0 0 8px">My Profile</h2><p style="font-size:21px;margin:0">Student</p></div></div></div>
+</div>
+</div>
+<div class="card readBox"><b>Simple meaning:</b> Nesting means placing one HTML element inside another element. The outer element is the <b>parent</b>, while the elements inside it are its <b>children</b>. This helps us organize a webpage into clear sections.</div>
+<div class="footer"><span><b>Nested = one element placed inside another</b></span><span>Parent → Child</span></div>
+</section>
+
+<section class="slide s7">
+<div class="kicker">06 · Comments</div><h2>Write a note that the browser does not display</h2>
+<div class="grid">
+<div class="commentSource"><span class="comment">&lt;!-- This is a note for the developer --&gt;</span><br><br><span class="tag">&lt;h1&gt;</span>Hello<span class="tag">&lt;/h1&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>Comment</h3><div><span class="term">&lt;!--</span> starts the comment.</div><div><span class="term">--&gt;</span> ends the comment.</div><br><b>Browser ignores the comment.</b></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">index.html</div></div><div class="page"><div style="font-size:40px;font-weight:850">Hello</div><p style="color:#777">The comment is not visible.</p></div></div>
+</div>
+</div>
+<div class="card readBox"><b>Simple meaning:</b> A comment is a note written for the developer. The browser reads the HTML source but does not display the comment on the webpage. Comments are useful for explaining or organizing code.</div>
+<div class="footer"><span><b>Comment = developer note inside HTML source</b></span><span>Source has it → Browser does not show it</span></div>
+</section>
+
+<div class="progress" id="progress"></div>
+<div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function show(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function next(){show(current+1)}function prev(){show(current-1)}
+document.addEventListener('keydown',e=>{
+if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()
+});
+document.addEventListener('click',e=>{if(e.target.closest('.nav,button,a'))return;next()});show(0);
+</script>
+</body></html>

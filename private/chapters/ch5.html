@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML — Chapter 05</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,Arial,sans-serif;color:#202124;background:#f4f1de}
+.slide{position:absolute;inset:0;display:none;padding:58px 72px 70px}.slide.active{display:block}
+.s1{background:#f4f1de}.s2{background:#e8f3ef}.s3{background:#f7e9d7}.s4{background:#e9edf7}.s5{background:#f4e8ef}.s6{background:#e8f0dc}.s7{background:#f3eadf}
+h1{font-size:64px;line-height:1;margin:0 0 14px;font-weight:850;letter-spacing:-2px}
+h2{font-size:48px;line-height:1.05;margin:0 0 12px;font-weight:850;letter-spacing:-1.5px}
+.kicker{font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c96f28;margin-bottom:13px}
+.sub{font-size:23px;color:#60656b;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:38px;align-items:center;height:calc(100% - 122px)}
+.code{background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px 25px;font:19px/1.65 Consolas,monospace;box-shadow:6px 6px 0 #222}
+.tag{color:#ff9f68}.txt{color:#f1f1f1}.attr{color:#9cdcfe}
+.flow{display:grid;grid-template-columns:1fr 55px 1.25fr;align-items:center;gap:14px}
+.mini,.explain{background:#fff;border:2px solid #222;border-radius:22px;padding:22px;box-shadow:4px 4px 0 #222}
+.mini h3{font-size:27px;margin:0 0 10px}.arrow{font-size:38px;font-weight:900;color:#c96f28;text-align:center}
+.term{color:#c96f28;font-weight:850}
+.browser{background:#fff;border:2px solid #222;border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 #222}
+.bar{height:43px;background:#eee;border-bottom:2px solid #222;display:flex;align-items:center;padding:0 14px;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid #222}
+.address{margin-left:10px;background:#fff;border:1px solid #bbb;border-radius:8px;padding:5px 12px;flex:1;color:#777;font-size:13px}
+.page{padding:25px;min-height:245px}
+.explain{position:absolute;left:72px;right:72px;bottom:56px;font-size:17px;line-height:1.45;box-shadow:3px 3px 0 #222}
+.explain b{color:#c96f28}
+.cover{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}.coverBox{max-width:1000px}
+.cover .label{display:inline-block;padding:10px 18px;border:2px solid #222;border-radius:999px;background:#fff;font-weight:800;margin-bottom:24px}
+.cover h1{font-size:90px}.cover .sub{font-size:28px}.by{margin-top:38px;font-weight:800;font-size:19px}
+.footer{position:absolute;left:72px;right:72px;bottom:20px;display:flex;justify-content:space-between;font-size:13px;color:#666}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:#c96f28;width:0;z-index:30}
+.nav{position:fixed;right:25px;bottom:20px;z-index:40;display:flex;gap:8px}
+.nav button{width:42px;height:38px;border:2px solid #222;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
+.demo-img{width:100%;height:145px;border:2px solid #222;border-radius:14px;object-fit:cover;background:#ddd}
+.path{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;flex-wrap:wrap}.folder{background:#f7d59a;border:2px solid #222;border-radius:10px;padding:9px 13px}
+@media(max-width:900px){.slide{overflow:auto}h1{font-size:45px}h2{font-size:36px}.grid{grid-template-columns:1fr}.cover h1{font-size:65px}}
+</style>
+</head>
+<body>
+
+<section class="slide active s1">
+<div class="cover"><div class="coverBox">
+<div class="label">CHAPTER 05</div>
+<h1>HTML<br><span style="color:#c96f28">Links & Images</span></h1>
+<div class="sub">Links · Absolute & Relative URLs · Images · Image Attributes · Linking Images · Paths</div>
+<div class="by">By Yash Srivastava & Shivam Srivastava</div>
+</div></div>
+</section>
+
+<section class="slide s2">
+<div class="kicker">01 · Links</div>
+<h2>Make one webpage connect to another</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;a</span> <span class="attr">href="about.html"</span><span class="tag">&gt;</span><span class="txt">About Us</span><span class="tag">&lt;/a&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;a&gt;</span> Anchor Tag</h3>
+<p style="font-size:19px"><span class="term">href</span> tells the browser where the link should go.</p>
+<p style="font-size:19px">The text between the tags becomes clickable.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">index.html</div></div>
+<div class="page"><div style="font-size:32px;font-weight:850">My Website</div><p><a href="#" onclick="return false" style="font-size:25px;color:#1769aa;font-weight:800">About Us</a></p><p style="color:#666">Clicking the link opens the destination.</p></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> A link connects the current webpage to another page, website, file, or location. <span class="term">&lt;a&gt;</span> is called the <b>anchor element</b>, and <span class="term">href</span> means <b>hypertext reference</b> — the destination of the link.</div>
+</section>
+
+<section class="slide s3">
+<div class="kicker">02 · Absolute vs Relative Links</div>
+<h2>Two common ways to write a link destination</h2>
+<div class="grid">
+<div class="code">
+<span class="tag">&lt;a</span> <span class="attr">href="https://example.com"</span><span class="tag">&gt;</span><span class="txt">Website</span><span class="tag">&lt;/a&gt;</span><br><br>
+<span class="tag">&lt;a</span> <span class="attr">href="about.html"</span><span class="tag">&gt;</span><span class="txt">About</span><span class="tag">&lt;/a&gt;</span>
+</div>
+<div class="flow">
+<div class="mini"><h3>Absolute URL</h3><p style="font-size:18px">Complete web address including the protocol and domain.</p><div class="term">https://example.com</div><hr><h3>Relative URL</h3><p style="font-size:18px">A path relative to the current website/page.</p><div class="term">about.html</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">mywebsite.com</div></div>
+<div class="page"><div style="font-size:27px;font-weight:850">Navigation</div><p style="line-height:1.9"><a href="#" onclick="return false">External Website</a><br><a href="#" onclick="return false">About Page</a></p><div style="font-size:14px;color:#777">External destination ↗ &nbsp; | &nbsp; Same website →</div></div></div>
+</div>
+</div>
+<div class="explain"><b>Remember:</b> An <b>absolute URL</b> contains the complete address of a resource. A <b>relative URL</b> describes where the resource is in relation to the current page or website.</div>
+</section>
+
+<section class="slide s4">
+<div class="kicker">03 · Images</div>
+<h2>Show a picture inside your webpage</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;img</span> <span class="attr">src="photo.jpg"</span> <span class="attr">alt="My Photo"</span><span class="tag">&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;img&gt;</span> Image Element</h3>
+<p style="font-size:19px"><span class="term">src</span> tells the browser which image file to load.</p>
+<p style="font-size:19px"><span class="term">alt</span> provides alternative text describing the image.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">gallery.html</div></div>
+<div class="page"><div style="font-size:28px;font-weight:850;margin-bottom:12px">My Gallery</div>
+<div style="height:145px;border:2px solid #222;border-radius:14px;background:linear-gradient(135deg,#dbe8ef 0 35%,#a8c3a0 35% 65%,#e4c59e 65%);display:flex;align-items:center;justify-content:center;font-size:30px">PHOTO</div></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> The <span class="term">&lt;img&gt;</span> element displays an image. It is an <b>empty element</b>, so it does not use a normal closing tag. The <span class="term">src</span> attribute points to the image file.</div>
+</section>
+
+<section class="slide s5">
+<div class="kicker">04 · Image Attributes</div>
+<h2>Tell the browser more about an image</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;img</span><br>
+&nbsp;&nbsp;<span class="attr">src="photo.jpg"</span><br>
+&nbsp;&nbsp;<span class="attr">alt="College Campus"</span><br>
+&nbsp;&nbsp;<span class="attr">width="400"</span><br>
+&nbsp;&nbsp;<span class="attr">height="250"</span><br>
+<span class="tag">&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>Important Attributes</h3>
+<div style="line-height:2;font-size:18px"><span class="term">src</span> → image location<br><span class="term">alt</span> → alternative text<br><span class="term">width</span> → image width<br><span class="term">height</span> → image height</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">campus.html</div></div>
+<div class="page"><div style="font-size:27px;font-weight:850;margin-bottom:10px">College Campus</div><div style="width:100%;height:145px;border:2px solid #222;border-radius:14px;background:linear-gradient(135deg,#c7d8e6,#a7b99c,#dfc08e);display:flex;align-items:center;justify-content:center;font-size:26px">400 × 250</div></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> Attributes provide extra information about an image. <span class="term">alt</span> is especially useful because it describes the image when it cannot be displayed and helps users using assistive technologies.</div>
+</section>
+
+<section class="slide s6">
+<div class="kicker">05 · Linking Images</div>
+<h2>An image can also work as a link</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;a</span> <span class="attr">href="gallery.html"</span><span class="tag">&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attr">src="photo.jpg"</span> <span class="attr">alt="Gallery"</span><span class="tag">&gt;</span><br>
+<span class="tag">&lt;/a&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>How it works</h3><p style="font-size:19px">The image is placed <b>inside</b> the anchor element.</p><div class="path"><span class="folder">&lt;a&gt;</span> → <span class="folder">&lt;img&gt;</span></div><p style="color:#666">Clicking the image follows the link.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">home.html</div></div>
+<div class="page"><div style="font-size:27px;font-weight:850;margin-bottom:12px">Our Gallery</div><div style="height:145px;border:3px solid #1769aa;border-radius:14px;background:linear-gradient(135deg,#d5e1eb,#b5c9a8,#e4c69d);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800">CLICK IMAGE</div><div style="font-size:14px;color:#1769aa;margin-top:8px">This image is clickable</div></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> HTML elements can be placed inside other elements. Here, the <span class="term">&lt;img&gt;</span> is inside <span class="term">&lt;a&gt;</span>, so the image becomes clickable and takes the user to the link destination.</div>
+</section>
+
+<section class="slide s7">
+<div class="kicker">06 · Paths</div>
+<h2>Tell HTML where your file is located</h2>
+<div class="grid">
+<div class="code"><span class="tag">&lt;img</span> <span class="attr">src="images/logo.png"</span><span class="tag">&gt;</span><br><br><span class="tag">&lt;a</span> <span class="attr">href="pages/about.html"</span><span class="tag">&gt;</span><span class="txt">About</span><span class="tag">&lt;/a&gt;</span></div>
+<div class="flow">
+<div class="mini"><h3>Folder Structure</h3>
+<div class="path"><span class="folder">website/</span></div>
+<div class="path" style="margin:7px 0 0 22px"><span class="folder">images/</span> → logo.png</div>
+<div class="path" style="margin:7px 0 0 22px"><span class="folder">pages/</span> → about.html</div>
+<p style="color:#666">The path describes how to reach the file from the current location.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">website/index.html</div></div>
+<div class="page"><div style="font-size:28px;font-weight:850">My Website</div><div style="margin-top:15px;height:105px;border:2px solid #222;border-radius:14px;background:#d8e2d2;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800">logo.png</div><p><a href="#" onclick="return false" style="font-size:20px">About</a></p></div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> A <b>path</b> tells HTML where a file is located. For example, <span class="term">images/logo.png</span> means “open the <b>images</b> folder and find <b>logo.png</b>.” Correct paths are essential for links and images to work.</div>
+</section>
+
+<div class="progress" id="progress"></div>
+<div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function show(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function next(){show(current+1)}function prev(){show(current-1)}
+document.addEventListener('keydown',e=>{
+if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()
+});
+document.addEventListener('click',e=>{if(e.target.closest('.nav,button,a'))return;next()});show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Learning Chapters</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f4f1de;
+            color: #202124;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid #222;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #222;
+            border-radius: 10px;
+            background: #ff9f43;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            box-shadow: 3px 3px 0 #222;
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .brand-text strong {
+            font-size: 17px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .nav-links a:hover {
+            color: #e66f00;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 95px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            border: 1.5px solid #222;
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            box-shadow: 3px 3px 0 #222;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 86px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #e66f00;
+        }
+
+        .hero p {
+            max-width: 680px;
+            font-size: 19px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 20px;
+            border: 2px solid #222;
+            border-radius: 10px;
+            font-weight: 900;
+            background: #ff9f43;
+            box-shadow: 4px 4px 0 #222;
+            transition: 0.15s ease;
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #222;
+        }
+
+        .btn.secondary {
+            background: #fff;
+        }
+
+        /* CODE GRAPHIC */
+
+        .code-window {
+            border: 2px solid #222;
+            border-radius: 16px;
+            background: #202124;
+            overflow: hidden;
+            box-shadow: 9px 9px 0 #222;
+            transform: rotate(1.5deg);
+        }
+
+        .window-bar {
+            height: 43px;
+            background: #fff;
+            border-bottom: 2px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 14px;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            border: 1px solid #222;
+            background: #f4f1de;
+        }
+
+        .code-content {
+            padding: 25px;
+            font: 14px/1.9 Consolas, monospace;
+            color: #f8f8f2;
+        }
+
+        .tag {
+            color: #ff9f43;
+        }
+
+        .attr {
+            color: #9cdcfe;
+        }
+
+        .text {
+            color: #d4d4d4;
+        }
+
+        /* CHAPTERS */
+
+        .chapters {
+            padding: 70px 0 110px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 46px;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            max-width: 470px;
+            color: #666;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .chapter {
+            border: 2px solid #222;
+            border-radius: 16px;
+            padding: 26px;
+            background: #fff;
+            box-shadow: 6px 6px 0 #222;
+            transition: 0.18s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter:hover {
+            transform: translateY(-5px);
+            box-shadow: 9px 11px 0 #222;
+        }
+
+        .chapter:nth-child(1) { background: #dff2f1; }
+        .chapter:nth-child(2) { background: #fff1c9; }
+        .chapter:nth-child(3) { background: #e7e0f7; }
+        .chapter:nth-child(4) { background: #ffe2d1; }
+        .chapter:nth-child(5) { background: #dceeff; }
+        .chapter:nth-child(6) { background: #e8f3d6; }
+        .chapter:nth-child(7) { background: #f5dfeb; }
+        .chapter:nth-child(8) { background: #dfe9f7; }
+        .chapter:nth-child(9) { background: #eee4d0; }
+        .chapter:nth-child(10) { background: #ffd8a8; }
+
+        .chapter-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        .chapter-number {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .chapter-icon {
+            width: 44px;
+            height: 44px;
+            border: 2px solid #222;
+            border-radius: 12px;
+            background: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .chapter h3 {
+            font-size: 27px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .topics {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .topics li {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            font-size: 14px;
+            color: #404040;
+        }
+
+        .topics li::before {
+            content: "✓";
+            font-weight: 900;
+        }
+
+        .chapter-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #222;
+            border-radius: 8px;
+            padding: 8px 13px;
+            background: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            box-shadow: 3px 3px 0 #222;
+        }
+
+        .chapter-link:hover {
+            background: #ff9f43;
+        }
+
+        /* ROADMAP */
+
+        .roadmap {
+            padding: 80px 0;
+            background: #202124;
+            color: #F52727;
+        }
+
+        .roadmap .section-heading h2 {
+            color: #fff;
+        }
+
+        .roadmap .section-heading p {
+            color: #c7c7c7;
+        }
+
+        .roadmap-line {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .roadmap-step {
+            border: 1px solid #777;
+            border-radius: 12px;
+            padding: 20px;
+            background: #292a2d;
+        }
+
+        .roadmap-step strong {
+            display: block;
+            color: #ffb45b;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-step span {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        /* FINAL CTA */
+
+        .cta {
+            padding: 90px 0;
+        }
+
+        .cta-box {
+            border: 2px solid #222;
+            border-radius: 20px;
+            padding: 55px;
+            background: #ff9f43;
+            box-shadow: 9px 9px 0 #222;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 48px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: #343434;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 2px solid #222;
+            background: #fff;
+            padding: 30px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-inner p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .back-top {
+            font-weight: 900;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .code-window {
+                transform: none;
+            }
+
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-line {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-heading h2 {
+                margin-bottom: 15px;
+            }
+
+            .cta-box {
+                padding: 35px 22px;
+            }
+
+            .cta-box h2 {
+                font-size: 38px;
+            }
+
+            .footer-inner {
+                display: block;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .container {
+                width: min(100% - 24px, 1180px);
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .chapter {
+                padding: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="#top" class="brand">
+
+                <div class="brand-mark">
+                    &lt;/&gt;
+                </div>
+
+                <div class="brand-text">
+                    <span>Learning Path</span>
+                    <strong>HTML Chapters</strong>
+                </div>
+
+            </a>
+
+            <div class="nav-links">
+                <a href="#chapters">Chapters</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#start">Start Learning</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="container hero-grid">
+
+            <div>
+
+                <span class="eyebrow">
+                    HTML • Beginner → Builder
+                </span>
+
+                <h1>
+                    Learn HTML.<br>
+                    <span>Build the Web.</span>
+                </h1>
+
+                <p>
+                    A structured 10-chapter learning path that takes you from
+                    understanding how the web works to building your own
+                    complete HTML website.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a class="btn" href="#chapters">
+                        Explore Chapters →
+                    </a>
+
+                    <a class="btn secondary" href="#roadmap">
+                        View Roadmap
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- GRAPHICAL CODE WINDOW -->
+
+            <div class="code-window">
+
+                <div class="window-bar">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="code-content">
+
+                    <div>
+                        <span class="tag">&lt;!DOCTYPE</span>
+                        <span class="text"> html</span>
+                        <span class="tag">&gt;</span>
+                    </div>
+
+                    <div>
+                        <span class="tag">&lt;html</span>
+                        <span class="attr"> lang="en"</span>
+                        <span class="tag">&gt;</span>
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span>
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>
+                        <span class="text">Hello Web</span>
+                        <span class="tag">&lt;/h1&gt;</span>
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>
+                        <span class="text">I am learning HTML.</span>
+                        <span class="tag">&lt;/p&gt;</span>
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span>
+                    </div>
+
+                    <div>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CHAPTERS -->
+
+    <main id="chapters" class="chapters">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">📚 Learning Chapters</span>
+                    <h2>Start from zero.<br>Build step by step.</h2>
+                </div>
+
+                <p>
+                    Each chapter focuses on one stage of learning HTML.
+                    Open a chapter, understand the concept visually, and
+                    practice it yourself.
+                </p>
+
+            </div>
+
+
+            <div class="chapter-grid">
+
+
+                <!-- CHAPTER 01 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+
+                        <div class="chapter-number">
+                            Chapter 01
+                        </div>
+
+                        <div class="chapter-icon">
+                            01
+                        </div>
+
+                    </div>
+
+                    <h3>Understanding the Web</h3>
+
+                    <ul class="topics">
+                        <li>What is a Website?</li>
+                        <li>Website vs Web Page</li>
+                        <li>Types of Websites</li>
+                        <li>What is a Web Browser?</li>
+                        <li>What happens when we open a Website?</li>
+                        <li>Frontend vs Backend</li>
+                        <li>HTML, CSS & JavaScript</li>
+                    </ul>
+
+                    <!-- Replace href with your online Chapter 01 file -->
+                    <a class="chapter-link" href="/chapter/ch1">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 02 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 02</div>
+                        <div class="chapter-icon">02</div>
+                    </div>
+
+                    <h3>Introduction to HTML</h3>
+
+                    <ul class="topics">
+                        <li>What is HTML?</li>
+                        <li>Why do we need HTML?</li>
+                        <li>HTML = Markup Language</li>
+                        <li>HTML5</li>
+                        <li>HTML File</li>
+                        <li>Our First HTML Page</li>
+                        <li>Basic HTML Structure</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch2">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 03 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 03</div>
+                        <div class="chapter-icon">03</div>
+                    </div>
+
+                    <h3>HTML Building Blocks</h3>
+
+                    <ul class="topics">
+                        <li>Tags</li>
+                        <li>Elements</li>
+                        <li>Opening & Closing Tags</li>
+                        <li>Attributes</li>
+                        <li>Nested Elements</li>
+                        <li>Comments</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch3">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 04 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 04</div>
+                        <div class="chapter-icon">04</div>
+                    </div>
+
+                    <h3>Text & Content</h3>
+
+                    <ul class="topics">
+                        <li>Headings</li>
+                        <li>Paragraphs</li>
+                        <li>Line Break</li>
+                        <li>Horizontal Line</li>
+                        <li>Bold / Italic / Highlight</li>
+                        <li>Quotes</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch4">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 05 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 05</div>
+                        <div class="chapter-icon">05</div>
+                    </div>
+
+                    <h3>Links & Images</h3>
+
+                    <ul class="topics">
+                        <li>Links</li>
+                        <li>Absolute vs Relative Links</li>
+                        <li>Images</li>
+                        <li>Image Attributes</li>
+                        <li>Linking Images</li>
+                        <li>Paths</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch5">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 06 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 06</div>
+                        <div class="chapter-icon">06</div>
+                    </div>
+
+                    <h3>Lists</h3>
+
+                    <ul class="topics">
+                        <li>Ordered List</li>
+                        <li>Unordered List</li>
+                        <li>Description List</li>
+                        <li>Nested Lists</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch6">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 07 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 07</div>
+                        <div class="chapter-icon">07</div>
+                    </div>
+
+                    <h3>Tables</h3>
+
+                    <ul class="topics">
+                        <li>Table</li>
+                        <li>Rows & Columns</li>
+                        <li>Table Head / Body</li>
+                        <li>Colspan / Rowspan</li>
+                        <li>Simple Practical Table</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch7">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 08 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 08</div>
+                        <div class="chapter-icon">08</div>
+                    </div>
+
+                    <h3>Forms</h3>
+
+                    <ul class="topics">
+                        <li>What is a Form?</li>
+                        <li>Input</li>
+                        <li>Label</li>
+                        <li>Textarea</li>
+                        <li>Select</li>
+                        <li>Radio / Checkbox</li>
+                        <li>Submit Button</li>
+                        <li>Basic Form</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch8">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 09 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 09</div>
+                        <div class="chapter-icon">09</div>
+                    </div>
+
+                    <h3>Semantic HTML</h3>
+
+                    <ul class="topics">
+                        <li>What is Semantic HTML?</li>
+                        <li>Header</li>
+                        <li>Nav</li>
+                        <li>Main</li>
+                        <li>Section</li>
+                        <li>Article</li>
+                        <li>Aside</li>
+                        <li>Footer</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch9">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+
+                <!-- CHAPTER 10 -->
+
+                <article class="chapter">
+
+                    <div class="chapter-top">
+                        <div class="chapter-number">Chapter 10 • 🚀</div>
+                        <div class="chapter-icon">10</div>
+                    </div>
+
+                    <h3>Build Something</h3>
+
+                    <ul class="topics">
+                        <li>Plan a webpage</li>
+                        <li>Create structure</li>
+                        <li>Add content</li>
+                        <li>Add images</li>
+                        <li>Add links</li>
+                        <li>Create a form</li>
+                        <li>Final mini website</li>
+                    </ul>
+
+                    <a class="chapter-link" href="/chapter/ch10">
+                        Open Chapter →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ROADMAP -->
+
+    <section id="roadmap" class="roadmap">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">Learning Roadmap</span>
+                    <h2>From concept<br>to creation.</h2>
+                </div>
+
+                <p>
+                    The chapters are arranged so every new concept builds
+                    on the previous one.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap-line">
+
+                <div class="roadmap-step">
+                    <strong>01 — Understand</strong>
+                    <span>Learn how websites and the web work.</span>
+                </div>
+
+                <div class="roadmap-step">
+                    <strong>02 — Structure</strong>
+                    <span>Learn HTML syntax, tags and elements.</span>
+                </div>
+
+                <div class="roadmap-step">
+                    <strong>03 — Content</strong>
+                    <span>Add text, links, images, lists and tables.</span>
+                </div>
+
+                <div class="roadmap-step">
+                    <strong>04 — Organize</strong>
+                    <span>Build forms and semantic page structures.</span>
+                </div>
+
+                <div class="roadmap-step">
+                    <strong>05 — Build</strong>
+                    <span>Combine everything into a mini website.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section id="start" class="cta">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>Ready to write your first HTML?</h2>
+
+                <p>
+                    Start with Chapter 01, follow the path, practice every
+                    concept and finish by building your own mini website.
+                </p>
+
+                <!-- Replace href with your online Chapter 01 file -->
+                <a class="btn" href="/chapter/ch1">
+                    Start Chapter 01 →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-inner">
+    
+            <div>
+    
+                <strong>HTML Learning Chapters</strong>
+    
+                <p>
+                    Learn • Practice • Build
+                </p>
+    
+                <p>
+                    Build by <strong style="color:red;">Yash Srivastava</strong>
+                </p>
+    
+            </div>
+    
+            <a class="back-top" href="#top">
+                ↑ Back to top
+            </a>
+    
+        </div>
+    
+    </footer>
+
+
+    <script>
+        // Small interaction: mark the current chapter link while hovering.
+        document.querySelectorAll(".chapter").forEach(function (card) {
+
+            card.addEventListener("mouseenter", function () {
+                this.querySelector(".chapter-link").style.transform = "translate(2px, 2px)";
+            });
+
+            card.addEventListener("mouseleave", function () {
+                this.querySelector(".chapter-link").style.transform = "";
+            });
+
+        });
+    </script>
+
+</body>
+</html>

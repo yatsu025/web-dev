@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML — Chapter 06</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,Arial,sans-serif;color:#202124;background:#f4f1de}
+.slide{position:absolute;inset:0;display:none;padding:58px 72px 70px}.slide.active{display:block}
+.s1{background:#f4f1de}.s2{background:#e8f3ef}.s3{background:#f7e9d7}.s4{background:#e9edf7}.s5{background:#f4e8ef}.s6{background:#e8f0dc}
+h1{font-size:64px;line-height:1;margin:0 0 14px;font-weight:850;letter-spacing:-2px}
+h2{font-size:48px;line-height:1.05;margin:0 0 12px;font-weight:850;letter-spacing:-1.5px}
+.kicker{font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c96f28;margin-bottom:13px}
+.sub{font-size:23px;color:#60656b;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:38px;align-items:center;height:calc(100% - 122px)}
+.code{background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px 25px;font:18px/1.58 Consolas,monospace;box-shadow:6px 6px 0 #222;white-space:pre-wrap;text-align:left;overflow:auto}
+.tag{color:#ff9f68}.txt{color:#f1f1f1}.attr{color:#9cdcfe}.val{color:#b5cea8}.comment{color:#7f8489}
+.flow{display:grid;grid-template-columns:1fr 55px 1.25fr;align-items:center;gap:14px}
+.mini,.explain{background:#fff;border:2px solid #222;border-radius:22px;padding:22px;box-shadow:4px 4px 0 #222}
+.mini h3{font-size:27px;margin:0 0 10px}.arrow{font-size:38px;font-weight:900;color:#c96f28;text-align:center}
+.term{color:#c96f28;font-weight:850}
+.browser{background:#fff;border:2px solid #222;border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 #222}
+.bar{height:43px;background:#eee;border-bottom:2px solid #222;display:flex;align-items:center;padding:0 14px;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid #222}
+.address{margin-left:10px;background:#fff;border:1px solid #bbb;border-radius:8px;padding:5px 12px;flex:1;color:#777;font-size:13px}
+.page{padding:25px;min-height:245px}
+.explain{position:absolute;left:72px;right:72px;bottom:56px;font-size:17px;line-height:1.45;box-shadow:3px 3px 0 #222}
+.explain b{color:#c96f28}
+.cover{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}.coverBox{max-width:1000px}
+.cover .label{display:inline-block;padding:10px 18px;border:2px solid #222;border-radius:999px;background:#fff;font-weight:800;margin-bottom:24px}
+.cover h1{font-size:90px}.cover .sub{font-size:28px}.by{margin-top:38px;font-weight:800;font-size:19px}
+.footer{position:absolute;left:72px;right:72px;bottom:20px;display:flex;justify-content:space-between;font-size:13px;color:#666}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:#c96f28;width:0;z-index:30}
+.nav{position:fixed;right:25px;bottom:20px;z-index:40;display:flex;gap:8px}
+.nav button{width:42px;height:38px;border:2px solid #222;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
+.path{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;flex-wrap:wrap}
+.folder{background:#f7d59a;border:2px solid #222;border-radius:10px;padding:9px 13px}
+.list{font-size:20px;line-height:1.55}
+.list h3{font-size:27px;margin:0 0 8px}
+.list ol,.list ul{margin:8px 0 12px 28px}
+.sample{background:#f7f5f0;border:1px solid #d8d3ca;border-radius:12px;padding:10px 13px;margin-top:9px;font-size:17px}
+.option{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:16px}
+.option div{background:#f7f5f0;border:1px solid #d8d3ca;border-radius:10px;padding:8px 10px}
+.desc dt{font-weight:850;font-size:21px;margin-top:12px}
+.desc dd{margin:2px 0 8px 20px;color:#555;font-size:18px}
+@media(max-width:900px){.slide{overflow:auto}h1{font-size:45px}h2{font-size:36px}.grid{grid-template-columns:1fr}.cover h1{font-size:65px}}
+</style>
+</head>
+<body>
+
+<section class="slide active s1">
+<div class="cover"><div class="coverBox">
+<div class="label">CHAPTER 06</div>
+<h1>HTML<br><span style="color:#c96f28">Lists</span></h1>
+<div class="sub">Ordered Lists · Unordered Lists · Description Lists · Nested Lists</div>
+<div class="by">By Yash Srivastava &amp; Shivam Srivastava</div>
+</div></div>
+</section>
+
+<section class="slide s2">
+<div class="kicker">01 · Ordered List</div>
+<h2>Show information in a specific sequence</h2>
+<div class="grid">
+<div>
+<div class="code"><span class="tag">&lt;ol&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">Open VS Code</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">Write HTML</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">Save the file</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></div>
+<div style="margin-top:14px;color:#555;font-size:17px"><b>OL</b> = Ordered List &nbsp; · &nbsp; <b>LI</b> = List Item</div>
+</div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;ol&gt;</span> + <span class="term">&lt;li&gt;</span></h3>
+<p style="font-size:18px">Use <b>&lt;ol&gt;</b> when the order or sequence matters.</p>
+<p style="font-size:18px">Each individual entry goes inside <b>&lt;li&gt;</b>.</p>
+<div class="sample"><b>Common use:</b> steps, rankings, instructions and ordered procedures.</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">steps.html</div></div>
+<div class="page list"><h3>How to Create a Webpage</h3>
+<ol><li>Open VS Code</li><li>Write HTML</li><li>Save the file</li></ol>
+<div class="sample">The browser automatically displays <b>1, 2, 3...</b> for a normal ordered list.</div>
+</div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> An <b>Ordered List</b> displays items in a sequence. The browser normally gives each item a number. Use <span class="term">&lt;ol&gt;</span> for the list and <span class="term">&lt;li&gt;</span> for each item.</div>
+<div class="footer"><span>HTML Lists · 01 / 05</span><span>Ordered List</span></div>
+</section>
+
+<section class="slide s3">
+<div class="kicker">02 · Ordered List Options</div>
+<h2>Numbers are not the only marker style</h2>
+<div class="grid">
+<div>
+<div class="code"><span class="comment">&lt;!-- Letters --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">type</span>=<span class="val">"A"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">CSS</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+
+<span class="comment">&lt;!-- Roman numerals --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">type</span>=<span class="val">"I"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/ol&gt;</span>
+
+<span class="comment">&lt;!-- Start / reverse --&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">start</span>=<span class="val">"5"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/ol&gt;</span>
+<span class="tag">&lt;ol</span> <span class="attr">reversed</span><span class="tag">&gt;</span>...<span class="tag">&lt;/ol&gt;</span></div>
+<div style="margin-top:12px;color:#555;font-size:16px"><b>type</b> changes markers · <b>start</b> changes the first value · <b>reversed</b> counts downward</div>
+</div>
+<div class="flow">
+<div class="mini"><h3>Useful values</h3>
+<div class="option">
+<div><b>type="1"</b><br>1, 2, 3</div>
+<div><b>type="A"</b><br>A, B, C</div>
+<div><b>type="a"</b><br>a, b, c</div>
+<div><b>type="I"</b><br>I, II, III</div>
+<div><b>type="i"</b><br>i, ii, iii</div>
+<div><b>start="5"</b><br>5, 6, 7</div>
+</div>
+<p style="font-size:16px;margin-bottom:0"><b>reversed</b> changes the direction: 3, 2, 1.</p></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">ordered.html</div></div>
+<div class="page list">
+<div class="sample"><b>A — Letter list</b><br>A. HTML &nbsp;&nbsp; B. CSS &nbsp;&nbsp; C. JavaScript</div>
+<div class="sample"><b>I — Roman list</b><br>I. HTML &nbsp;&nbsp; II. CSS &nbsp;&nbsp; III. JavaScript</div>
+<div class="sample"><b>start="5"</b><br>5. HTML &nbsp;&nbsp; 6. CSS &nbsp;&nbsp; 7. JavaScript</div>
+<div class="sample"><b>reversed</b><br>3. Third &nbsp;&nbsp; 2. Second &nbsp;&nbsp; 1. First</div>
+</div></div>
+</div>
+</div>
+<div class="explain"><b>More than 1, 2, 3:</b> <span class="term">type</span> can use numbers, letters or Roman numerals. <span class="term">start</span> changes the starting value, and <span class="term">reversed</span> makes the list count down. These are HTML list features; detailed visual styling can be handled with CSS.</div>
+<div class="footer"><span>HTML Lists · 02 / 05</span><span>Ordered List Options</span></div>
+</section>
+
+<section class="slide s4">
+<div class="kicker">03 · Unordered List</div>
+<h2>Group items when their order does not matter</h2>
+<div class="grid">
+<div>
+<div class="code"><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">CSS</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">JavaScript</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></div>
+<div style="margin-top:14px;color:#555;font-size:17px"><b>UL</b> = Unordered List &nbsp; · &nbsp; <b>LI</b> = List Item</div>
+</div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;ul&gt;</span> + <span class="term">&lt;li&gt;</span></h3>
+<p style="font-size:18px">Use <b>&lt;ul&gt;</b> when the order of items is not important.</p>
+<p style="font-size:18px">The browser normally displays a <b>bullet</b> before each item.</p>
+<div class="sample"><b>Common use:</b> features, skills, navigation choices and ingredients.</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">skills.html</div></div>
+<div class="page list"><h3>Web Skills</h3>
+<ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+<div class="sample">The list is grouped visually, but no sequence is required.</div>
+</div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> An <b>Unordered List</b> is for a collection of items where sequence is not important. Use <span class="term">&lt;ul&gt;</span> around the list and <span class="term">&lt;li&gt;</span> around each item.</div>
+<div class="footer"><span>HTML Lists · 03 / 05</span><span>Unordered List</span></div>
+</section>
+
+<section class="slide s5">
+<div class="kicker">04 · Description List</div>
+<h2>Connect a term with its explanation</h2>
+<div class="grid">
+<div>
+<div class="code"><span class="tag">&lt;dl&gt;</span>
+  <span class="tag">&lt;dt&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span><span class="txt">Structure of a webpage</span><span class="tag">&lt;/dd&gt;</span>
+
+  <span class="tag">&lt;dt&gt;</span><span class="txt">CSS</span><span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span><span class="txt">Style of a webpage</span><span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></div>
+<div style="margin-top:14px;color:#555;font-size:16px"><b>DL</b> = Description List · <b>DT</b> = Description Term · <b>DD</b> = Description Details</div>
+</div>
+<div class="flow">
+<div class="mini"><h3><span class="term">&lt;dl&gt;</span> structure</h3>
+<p style="font-size:18px"><b>&lt;dt&gt;</b> identifies the term.</p>
+<p style="font-size:18px"><b>&lt;dd&gt;</b> gives information or a description about that term.</p>
+<div class="sample"><b>Useful for:</b> glossaries, definitions, FAQs and name–value information.</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">glossary.html</div></div>
+<div class="page list desc"><h3>Web Glossary</h3>
+<dl><dt>HTML</dt><dd>Structure of a webpage</dd><dt>CSS</dt><dd>Style of a webpage</dd><dt>JavaScript</dt><dd>Behaviour and interaction</dd></dl>
+</div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> A <b>Description List</b> pairs a term with its details. <span class="term">&lt;dl&gt;</span> contains the list, <span class="term">&lt;dt&gt;</span> represents the term, and <span class="term">&lt;dd&gt;</span> represents its description or details.</div>
+<div class="footer"><span>HTML Lists · 04 / 05</span><span>Description List</span></div>
+</section>
+
+<section class="slide s6">
+<div class="kicker">05 · Nested Lists</div>
+<h2>Build levels inside a list</h2>
+<div class="grid">
+<div>
+<div class="code"><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">Frontend</span>
+    <span class="tag">&lt;ul&gt;</span>
+      <span class="tag">&lt;li&gt;</span><span class="txt">HTML</span><span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span><span class="txt">CSS</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="txt">Backend</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></div>
+<div style="margin-top:14px;color:#555;font-size:17px"><b>Nested</b> = one list placed inside another list item.</div>
+</div>
+<div class="flow">
+<div class="mini"><h3>Parent → Child</h3>
+<p style="font-size:18px">The outer item becomes the <b>parent</b>.</p>
+<p style="font-size:18px">A second list inside that item becomes its <b>child list</b>.</p>
+<div class="path"><span class="folder">Frontend</span> → <span class="folder">HTML</span> + <span class="folder">CSS</span></div>
+<div class="sample">Useful for categories, menus, course roadmaps and multi-level navigation.</div></div>
+<div class="arrow">→</div>
+<div class="browser"><div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="address">roadmap.html</div></div>
+<div class="page list"><h3>Web Development</h3>
+<ul>
+<li><b>Frontend</b>
+  <ul><li>HTML</li><li>CSS</li></ul>
+</li>
+<li><b>Backend</b></li>
+<li><b>Database</b></li>
+</ul>
+<div class="sample"><b>Hierarchy:</b> Frontend → HTML / CSS</div>
+</div></div>
+</div>
+</div>
+<div class="explain"><b>Simple meaning:</b> A <b>Nested List</b> is a list inside another list item. It creates a clear <b>parent → child hierarchy</b>, making multi-level information easier to organise and read.</div>
+<div class="footer"><span>HTML Lists · 05 / 05</span><span>Nested Lists</span></div>
+</section>
+
+<div class="progress" id="progress"></div>
+<div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function show(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function next(){show(current+1)}function prev(){show(current-1)}
+document.addEventListener('keydown',e=>{
+if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()
+});
+document.addEventListener('click',e=>{if(e.target.closest('.nav,button,a'))return;next()});show(0);
+</script>
+</body>
+</html>

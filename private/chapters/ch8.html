@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML Classroom — Chapter 05</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,Arial,sans-serif;color:#202124;background:#f4f1de}
+.slide{position:absolute;inset:0;display:none;padding:58px 72px 70px}.slide.active{display:block}
+.s1{background:#f4f1de}.s2{background:#e8f3ef}.s3{background:#f7e9d7}.s4{background:#e9edf7}.s5{background:#f4e8ef}.s6{background:#e8f0dc}.s7{background:#f3eadf}
+h1{font-size:64px;line-height:1;margin:0 0 14px;font-weight:850;letter-spacing:-2px}
+h2{font-size:48px;line-height:1.05;margin:0 0 12px;font-weight:850;letter-spacing:-1.5px}
+.kicker{font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c96f28;margin-bottom:13px}
+.sub{font-size:23px;color:#60656b;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:38px;align-items:center;height:calc(100% - 122px)}
+.code{background:#1f2328;color:#f6f8fa;border-radius:18px;padding:22px 25px;font:19px/1.65 Consolas,monospace;box-shadow:6px 6px 0 #222}
+.tag{color:#ff9f68}.txt{color:#f1f1f1}.attr{color:#9cdcfe}
+.flow{display:grid;grid-template-columns:1fr 55px 1.25fr;align-items:center;gap:14px}
+.mini,.explain{background:#fff;border:2px solid #222;border-radius:22px;padding:22px;box-shadow:4px 4px 0 #222}
+.mini h3{font-size:27px;margin:0 0 10px}.arrow{font-size:38px;font-weight:900;color:#c96f28;text-align:center}
+.term{color:#c96f28;font-weight:850}
+.browser{background:#fff;border:2px solid #222;border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 #222}
+.bar{height:43px;background:#eee;border-bottom:2px solid #222;display:flex;align-items:center;padding:0 14px;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;border:1.5px solid #222}
+.address{margin-left:10px;background:#fff;border:1px solid #bbb;border-radius:8px;padding:5px 12px;flex:1;color:#777;font-size:13px}
+.page{padding:25px;min-height:245px}
+.explain{position:absolute;left:72px;right:72px;bottom:56px;font-size:17px;line-height:1.45;box-shadow:3px 3px 0 #222}
+.explain b{color:#c96f28}
+.cover{height:100%;display:flex;align-items:center;justify-content:center;text-align:center}.coverBox{max-width:1000px}
+.cover .label{display:inline-block;padding:10px 18px;border:2px solid #222;border-radius:999px;background:#fff;font-weight:800;margin-bottom:24px}
+.cover h1{font-size:90px}.cover .sub{font-size:28px}.by{margin-top:38px;font-weight:800;font-size:19px}
+.footer{position:absolute;left:72px;right:72px;bottom:20px;display:flex;justify-content:space-between;font-size:13px;color:#666}
+.progress{position:absolute;left:0;bottom:0;height:5px;background:#c96f28;width:0;z-index:30}
+.nav{position:fixed;right:25px;bottom:20px;z-index:40;display:flex;gap:8px}
+.nav button{width:42px;height:38px;border:2px solid #222;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
+.demo-img{width:100%;height:145px;border:2px solid #222;border-radius:14px;object-fit:cover;background:#ddd}
+.path{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;flex-wrap:wrap}.folder{background:#f7d59a;border:2px solid #222;border-radius:10px;padding:9px 13px}
+@media(max-width:900px){.slide{overflow:auto}h1{font-size:45px}h2{font-size:36px}.grid{grid-template-columns:1fr}.cover h1{font-size:65px}}
+</style>
+
+<style>
+/* Chapter 08 — browser form demos only */
+.browser .page{
+  overflow:hidden;
+}
+.browser .page .mockTitle{
+  font-weight:850;
+  font-size:18px;
+  line-height:1.2;
+  margin:0 0 10px;
+}
+.browser .page .mockLabel{
+  display:block;
+  font-weight:750;
+  font-size:13px;
+  line-height:1.2;
+  margin:8px 0 4px;
+}
+.browser .page .mockInput,
+.browser .page .mockSelect,
+.browser .page .mockArea{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  border:2px solid #202124;
+  border-radius:7px;
+  padding:8px 9px;
+  margin:0 0 6px;
+  background:#fff;
+  color:#202124;
+  font:14px/1.2 Arial,sans-serif;
+  min-height:35px;
+}
+.browser .page .mockInput::placeholder,
+.browser .page .mockArea::placeholder{
+  color:#777;
+  opacity:1;
+}
+.browser .page .mockArea{
+  height:70px;
+  min-height:70px;
+  resize:none;
+}
+.browser .page .mockSelect{
+  appearance:auto;
+  -webkit-appearance:auto;
+  padding-right:8px;
+}
+.browser .page .mockBtn{
+  display:inline-block;
+  border:2px solid #202124;
+  background:#f2994a;
+  color:#202124;
+  border-radius:7px;
+  padding:8px 14px;
+  min-height:35px;
+  font:850 13px/1 Arial,sans-serif;
+  cursor:default;
+  margin-top:3px;
+}
+.browser .page .check{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:14px;
+  line-height:1.2;
+  margin:7px 0;
+}
+.browser .page .check input{
+  width:15px;
+  height:15px;
+  margin:0;
+  flex:0 0 auto;
+  accent-color:#f2994a;
+}
+</style>
+
+</head>
+<body>
+
+<section class="slide active s1">
+<div class="cover"><div class="coverBox">
+<div class="label">CHAPTER 08</div>
+<h1>HTML<br><span style="color:#c96f28">HTML Forms</span></h1>
+<div class="sub">Links · Absolute & Relative URLs · Images · Image Attributes · Linking Images · Paths</div>
+<div class="by">By Yash Srivastava & Shivam Srivastava</div>
+</div></div>
+</section>
+
+<!-- 1 -->
+<section class="slide s2 active">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>What is a Form?</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;form&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span><span class="tag">&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span><br>
+      <span class="tag">&lt;/form&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>FORM</b><br><small>Collects information from the user</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Example Form</span></div>
+        <div class="page">
+          <div class="mockTitle">Contact Us</div>
+          <input class="mockInput" placeholder="Your name">
+          <button class="mockBtn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Form:</b> an HTML form is used to collect user input such as names, emails, messages and choices. The <b>&lt;form&gt;</b> element acts as the container.</div>
+</section>
+
+<!-- 2 -->
+<section class="slide s3">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Input</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span><br>
+      &nbsp;&nbsp;<span class="attr">placeholder</span>=<span class="str">"Enter your name"</span><span class="tag">&gt;</span><br><br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span><span class="tag">&gt;</span><br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"password"</span><span class="tag">&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>&lt;input&gt;</b><br><small>Creates a field for user data</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Input Types</span></div>
+        <div class="page">
+          <div class="mockTitle">Different Inputs</div>
+          <label class="mockLabel">Text</label>
+          <input class="mockInput" placeholder="Enter your name">
+          <label class="mockLabel">Email</label>
+          <input class="mockInput" type="email" placeholder="you@example.com">
+          <label class="mockLabel">Password</label>
+          <input class="mockInput" type="password" value="••••••••">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Input:</b> the <b>&lt;input&gt;</b> element creates form controls. The <b>type</b> attribute decides what kind of input the browser should show.</div>
+</section>
+
+<!-- 3 -->
+<section class="slide s4">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Label</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"name"</span><span class="tag">&gt;</span>Name<span class="tag">&lt;/label&gt;</span><br>
+      <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"name"</span> <span class="attr">type</span>=<span class="str">"text"</span><span class="tag">&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>Label</b><br><small>Tells the user what a field is for</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Label Example</span></div>
+        <div class="page">
+          <label class="mockLabel">Name</label>
+          <input class="mockInput" placeholder="Enter your name">
+          <label class="mockLabel">Email Address</label>
+          <input class="mockInput" type="email" placeholder="you@example.com">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Label:</b> the <b>&lt;label&gt;</b> element gives a readable name to a form control. <b>for</b> should match the input's <b>id</b>.</div>
+</section>
+
+<!-- 4 -->
+<section class="slide s5">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Textarea</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"message"</span><span class="tag">&gt;</span>Message<span class="tag">&lt;/label&gt;</span><br>
+      <span class="tag">&lt;textarea</span> <span class="attr">id</span>=<span class="str">"message"</span><br>
+      &nbsp;&nbsp;<span class="attr">rows</span>=<span class="str">"4"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>&lt;textarea&gt;</b><br><small>For longer, multi-line text</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Message</span></div>
+        <div class="page">
+          <label class="mockLabel">Your Message</label>
+          <textarea class="mockArea" placeholder="Write your message..."></textarea>
+          <button class="mockBtn">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Textarea:</b> <b>&lt;textarea&gt;</b> is used when the user needs to enter more than one line of text, such as a message, feedback or description.</div>
+</section>
+
+<!-- 5 -->
+<section class="slide s6">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Select</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"city"</span><span class="tag">&gt;</span>City<span class="tag">&lt;/label&gt;</span><br>
+      <span class="tag">&lt;select</span> <span class="attr">id</span>=<span class="str">"city"</span><span class="tag">&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;option&gt;</span>Lucknow<span class="tag">&lt;/option&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;option&gt;</span>Delhi<span class="tag">&lt;/option&gt;</span><br>
+      <span class="tag">&lt;/select&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>&lt;select&gt;</b><br><small>Creates a dropdown list</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Choose a City</span></div>
+        <div class="page">
+          <label class="mockLabel">City</label>
+          <select class="mockSelect"><option>Choose a city</option><option>Lucknow</option><option>Delhi</option><option>Mumbai</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Select:</b> the <b>&lt;select&gt;</b> element creates a dropdown. Each <b>&lt;option&gt;</b> represents one choice available to the user.</div>
+</section>
+
+<!-- 6 -->
+<section class="slide s7">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Radio / Checkbox</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"radio"</span> <span class="attr">name</span>=<span class="str">"size"</span><span class="tag">&gt;</span> Small<br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"radio"</span> <span class="attr">name</span>=<span class="str">"size"</span><span class="tag">&gt;</span> Large<br><br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"checkbox"</span><span class="tag">&gt;</span> HTML<br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"checkbox"</span><span class="tag">&gt;</span> CSS
+    </div>
+    <div class="flow">
+      <div class="mini"><b>Choices</b><br><small>Radio = one choice<br>Checkbox = multiple choices</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Choose Options</span></div>
+        <div class="page">
+          <div class="mockTitle">Size</div>
+          <label class="check"><input type="radio" name="sizeDemo" checked> Small</label>
+          <label class="check"><input type="radio" name="sizeDemo"> Large</label>
+          <div class="mockTitle" style="margin-top:12px">Skills</div>
+          <label class="check"><input type="checkbox" checked> HTML</label>
+          <label class="check"><input type="checkbox" checked> CSS</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Radio:</b> normally lets the user choose one option from a group. <b>Checkbox:</b> lets the user select multiple independent options.</div>
+</section>
+
+<!-- 7 -->
+<section class="slide s2">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Submit Button</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span><br>
+      &nbsp;&nbsp;Submit Form<br>
+      <span class="tag">&lt;/button&gt;</span><br><br>
+      <span class="comment">&lt;!-- or --&gt;</span><br>
+      <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"submit"</span><br>
+      &nbsp;&nbsp;<span class="attr">value</span>=<span class="str">"Send"</span><span class="tag">&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>Submit</b><br><small>Sends the form for processing</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Submit</span></div>
+        <div class="page">
+          <label class="mockLabel">Email</label>
+          <input class="mockInput" placeholder="you@example.com">
+          <button class="mockBtn">Submit Form</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Submit button:</b> a button with <b>type="submit"</b> tells the browser to submit the form. What happens after submission depends on the form's configuration and backend.</div>
+</section>
+
+<!-- 8 -->
+<section class="slide s3">
+  <div class="kicker">CHAPTER 08 · FORMS</div>
+  <h2>Basic Form</h2>
+  <div class="grid">
+    <div class="code">
+      <span class="tag">&lt;form&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;label&gt;</span>Name<span class="tag">&lt;/label&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span><span class="tag">&gt;</span><br><br>
+      &nbsp;&nbsp;<span class="tag">&lt;label&gt;</span>Email<span class="tag">&lt;/label&gt;</span><br>
+      &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span><span class="tag">&gt;</span><br><br>
+      &nbsp;&nbsp;<span class="tag">&lt;textarea&gt;&lt;/textarea&gt;</span><br><br>
+      &nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span><br>
+      <span class="tag">&lt;/form&gt;</span>
+    </div>
+    <div class="flow">
+      <div class="mini"><b>Complete Form</b><br><small>Combine controls to collect useful information</small></div>
+      <div class="arrow">→</div>
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span>Contact Form</span></div>
+        <div class="page">
+          <div class="mockTitle">Contact Us</div>
+          <label class="mockLabel">Name</label>
+          <input class="mockInput" placeholder="Your name">
+          <label class="mockLabel">Email</label>
+          <input class="mockInput" placeholder="you@example.com">
+          <label class="mockLabel">Message</label>
+          <textarea class="mockArea" placeholder="Write something..."></textarea>
+          <button class="mockBtn">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="explain"><b>Basic Form:</b> HTML forms are built by combining elements such as <b>&lt;form&gt;</b>, <b>&lt;label&gt;</b>, <b>&lt;input&gt;</b>, <b>&lt;textarea&gt;</b>, <b>&lt;select&gt;</b> and submit controls.</div>
+</section>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+function show(n){current=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function next(){show(current+1)}function prev(){show(current-1)}
+document.addEventListener('keydown',e=>{
+if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()
+});
+document.addEventListener('click',e=>{if(e.target.closest('.nav,button,a'))return;next()});show(0);
+</script>
+</body>
+</html>
